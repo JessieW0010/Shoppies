@@ -1,13 +1,11 @@
-import React from 'react';
-import './style.css';
+import { connect } from 'react-redux';
+import Container from './Container';
+// import {
+//   getCareerMatches,
+// } from '../MatchesContainer/store/actions';
 
-function App() {
-  return (
-    <div className="search-container">
-      <input type="text" className="search-bar" />
-      <input type="submit" value="" className="search-btn" /> 
-    </div>
-  );
-}
+const mapStateToProps = () => ({});
 
-export default App;
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
