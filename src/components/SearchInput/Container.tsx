@@ -2,15 +2,21 @@ import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './style.css';
 import Content from './Content';
 
-interface ISearchInputState {
-  activeOption: number;
-  filteredOptions: any[];
-  showOptions: boolean;
-  userInput: string;
+interface ISearchInputContainerPropTypes {
+  searchMovie: (value: string) => void 
 }
 
-function Container() {
-  const [state, setState] = useState<ISearchInputState>({
+interface ISignUpData {
+  activeOption: number,
+  filteredOptions: any[],
+  showOptions: boolean,
+  userInput: string
+}
+
+function Container({ 
+  getSearchResults 
+}: any) {
+  const [state, setState] = useState<ISignUpData>({
     activeOption: 0,
     filteredOptions: [],
     showOptions: false,
@@ -23,30 +29,31 @@ function Container() {
         ...state,
         userInput: event.target.value
       });
-      // searchMovie(event.target.value);
+      getSearchResults(event.target.value);
     }
   }
 
   const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    const { activeOption, filteredOptions } = state;
-    if (e.keyCode === 13) {
-      setState({
-        ...state,
-        activeOption: 0,
-        showOptions: false,
-        userInput: filteredOptions[activeOption]
-      });
-    } else if (e.keyCode === 38) {
-      if (activeOption === 0) {
-        return;
-      }
-      setState({ ...state, activeOption: activeOption - 1 });
-    } else if (e.keyCode === 40) {
-      if (activeOption === filteredOptions.length - 1) {
-        return;
-      }
-      setState({ ...state,activeOption: activeOption + 1 });
-    }
+    console.log('key was pressed');
+    // const { activeOption, filteredOptions } = state;
+    // if (e.keyCode === 13) {
+    //   setState({
+    //     ...state,
+    //     activeOption: 0,
+    //     showOptions: false,
+    //     userInput: filteredOptions[activeOption]
+    //   });
+    // } else if (e.keyCode === 38) {
+    //   if (activeOption === 0) {
+    //     return;
+    //   }
+    //   setState({ ...state, activeOption: activeOption - 1 });
+    // } else if (e.keyCode === 40) {
+    //   if (activeOption === filteredOptions.length - 1) {
+    //     return;
+    //   }
+    //   setState({ ...state,activeOption: activeOption + 1 });
+    // }
   };
 
   return (

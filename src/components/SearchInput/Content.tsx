@@ -1,7 +1,19 @@
 import React from 'react';
 import './style.css';
 
-function Content({ state, handleOnChange, handleOnKeyDown, searchResults }) {
+type SearchInputPropTypes = {
+  state: any,
+  handleOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  handleOnKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void,
+  searchResults: any[]
+}
+
+function Content({ 
+  state, 
+  handleOnChange, 
+  handleOnKeyDown, 
+  searchResults
+}: SearchInputPropTypes) {
   return (
     <div className="search-container">
       <input type="text" onKeyDown={handleOnKeyDown} value={state.userInput} onChange={handleOnChange} className="search-bar" />
