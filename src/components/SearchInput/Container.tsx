@@ -24,13 +24,11 @@ function Container({
   });
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.value) {
-      setState({
-        ...state,
-        userInput: event.target.value
-      });
-      getSearchResults(event.target.value);
-    }
+    setState({
+      ...state,
+      userInput: event.target.value
+    });
+    getSearchResults(event.target.value);
   }
 
   const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {

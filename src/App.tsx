@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Search from './components/SearchInput'
+import SearchResult from './components/SearchResult'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       </header>
       <div className="app-body">
         <Search/>
+        <SearchResult/>
       </div>
     </div>
   );

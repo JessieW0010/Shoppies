@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import { GET_SEARCH_RESULTS, GET_SEARCH_RESULTS_SUCCESS, SEARCH_RESULT_ERROR } from '../store/constants';
-import { search } from '../api';
+import { GET_SEARCH_RESULTS, GET_SEARCH_RESULTS_SUCCESS, SEARCH_RESULT_ERROR } from '../constants';
+import { search } from '../../api';
 
 export function* handleGetSearchResults({ 
   searchTerm

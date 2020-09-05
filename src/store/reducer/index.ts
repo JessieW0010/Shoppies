@@ -1,14 +1,16 @@
 import {
   GET_SEARCH_RESULTS,
   GET_SEARCH_RESULTS_SUCCESS
-} from './constants';
+} from '../constants';
+import { ApplicationState } from '../../types';
+import { ApplicationAction } from '../../types/actionTypes';
 
-const initialState = {
+export const initialState: ApplicationState = {
   isLoading: false,
   movie: null
-};
+}
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action: ApplicationAction) => {
   switch (action.type) {
     case GET_SEARCH_RESULTS:
       return {
