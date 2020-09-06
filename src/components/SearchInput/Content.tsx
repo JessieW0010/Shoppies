@@ -1,5 +1,7 @@
 import React from 'react';
 import './style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 type SearchInputPropTypes = {
   state: any,
@@ -16,8 +18,12 @@ function Content({
 }: SearchInputPropTypes) {
   return (
     <div className="search-container">
-      <input type="text" onKeyDown={handleOnKeyDown} value={state.userInput} onChange={handleOnChange} className="search-bar" />
-      <input type="submit" value="" className="search-btn" /> 
+      <div className="input-group mb-3">
+        <input type="text" className="form-control" value={state.userInput}/>
+        <div className="input-group-append">
+          <FontAwesomeIcon icon={faCoffee} />
+        </div>
+      </div>
       {searchResults}
     </div>
   );

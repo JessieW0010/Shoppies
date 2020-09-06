@@ -1,18 +1,15 @@
-body {
-  margin: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
-.app {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+body, #root {
+  margin: 0;
   height: 100vh;
   background-color: aliceblue;
 }
 
-.app-header > p {
-  font-size: 50px;
+.app {
+  padding: 10%;
 }
 
-.app-body {
+.logo {
+  font-size: 70px;
 }

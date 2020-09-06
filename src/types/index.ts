@@ -4,23 +4,28 @@ export interface IRatings {
 }
 
 export interface IMovie {
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Writer: string;
-  Actors: string;
-  Plot: string;
-  Language: string;
-  Awards: string;
   Poster: string;
-  Ratings: IRatings[];
+  Title: string;
+  Type: string;
+  Year: string;
+  imdbID: string;
+}
+
+export interface ISearchResponse {
+  status: number;
+  data: ISearchResponseData;
+}
+
+interface ISearchResponseData {
+  data: IMovie[];
+  Status: boolean;
 }
 
 export interface ApplicationState {
   isLoading: boolean;
   movie: IMovie | null;
+}
+
+export interface ISearchPayload {
+  title: string;
 }

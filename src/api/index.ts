@@ -1,5 +1,6 @@
 import Axios from 'axios';
+import { ISearchPayload } from '../types';
 
-export const search = (movieTitle: string) => {
-  return Axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&t=${movieTitle}`)
+export const search = (payload: ISearchPayload) => {
+  return Axios.post(`http://localhost:8000/search`, payload)
 };

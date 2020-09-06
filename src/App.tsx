@@ -1,21 +1,23 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from 'react-bootstrap';
 import Search from './components/SearchInput'
 import SearchResult from './components/SearchResult'
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <p>
+    <Container className="app container-fluid h-100">
+      <Row>
+        <p className="logo font-weight-bold text-center w-100">
           The Shoppies
         </p>
-      </header>
-      <div className="app-body">
+      </Row>
+      <Col>
         <Search/>
         <SearchResult/>
-      </div>
-    </div>
+      </Col>
+    </Container>
   );
 }
 
