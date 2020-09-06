@@ -3,7 +3,7 @@
 body, #root {
   margin: 0;
   height: 100vh;
-  background-color: aliceblue;
+  background-color: #f1f2f3;
 }
 
 .app {
@@ -23,5 +23,5 @@ body, #root {
 }
 
 .navbar {
-  background-color: pink;
+  background-color: #f1f2f3;
 }
