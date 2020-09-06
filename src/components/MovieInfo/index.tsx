@@ -19,20 +19,6 @@ const mapStateToProps = ({ selectedMovie, isLoading }: ApplicationState) => ({
     "Country": "USA, Mexico",
     "Awards": "Won 4 Oscars. Another 160 wins & 138 nominations.",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg",
-    "Ratings": [
-        {
-            "Source": "Internet Movie Database",
-            "Value": "8.1/10"
-        },
-        {
-            "Source": "Rotten Tomatoes",
-            "Value": "93%"
-        },
-        {
-            "Source": "Metacritic",
-            "Value": "91/100"
-        }
-    ],
     "Metascore": "91",
     "imdbRating": "8.1",
     "imdbVotes": "828,845",

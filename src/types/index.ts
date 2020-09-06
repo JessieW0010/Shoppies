@@ -22,11 +22,6 @@ export interface ISearchMovieInfoResponse {
   };
 }
 
-export interface IRatings {
-  Source: string;
-  Value: string;
-}
-
 export interface IMovieInfo {
   Title: string;
   Year: string;
@@ -41,7 +36,6 @@ export interface IMovieInfo {
   Country: string;
   Awards: string;
   Poster: string;
-  Ratings: IRatings[],
   Metascore: string;
   imdbRating: string;
   imdbVotes: string;
