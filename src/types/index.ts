@@ -1,8 +1,3 @@
-export interface IRatings {
-  Source: string;
-  Value: string;
-}
-
 export interface IMovie {
   Poster: string;
   Title: string;
@@ -17,13 +12,14 @@ export interface ISearchResponse {
 }
 
 interface ISearchResponseData {
-  data: IMovie[];
+  movies: IMovie[];
   Status: boolean;
 }
 
 export interface ApplicationState {
   isLoading: boolean;
   movies: IMovie[];
+  searchTerm: string;
 }
 
 export interface ISearchPayload {

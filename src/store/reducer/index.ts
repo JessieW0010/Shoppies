@@ -7,7 +7,8 @@ import { ApplicationAction } from '../../types/actionTypes';
 
 export const initialState: ApplicationState = {
   isLoading: false,
-  movies: []
+  movies: [],
+  searchTerm: ""
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -16,6 +17,7 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       return {
         ...initialState,
         isLoading: true,
+        searchTerm: action.searchTerm
       };
     case GET_SEARCH_RESULTS_SUCCESS:
       return {

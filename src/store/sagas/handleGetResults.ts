@@ -11,7 +11,7 @@ export function* handleGetSearchResults({
     if (response.status === 200) {
       yield put({
         type: GET_SEARCH_RESULTS_SUCCESS,
-        movie: response.data
+        movies: response.data.movies
       })
     }
   } catch (err) {

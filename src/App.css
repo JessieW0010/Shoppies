@@ -13,3 +13,7 @@ body, #root {
 .logo {
   font-size: 70px;
 }
+
+.image-parent {
+  max-width: 40px;
+}
