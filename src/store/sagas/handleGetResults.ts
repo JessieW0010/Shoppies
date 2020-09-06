@@ -1,13 +1,15 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { GET_SEARCH_RESULTS, GET_SEARCH_RESULTS_SUCCESS, SEARCH_RESULT_ERROR } from '../constants';
-import { search } from '../../api';
+import { searchByTitle } from '../../api';
 import { ISearchResponse } from '../../types';
+import { IGetSearchResults } from '../../types/actionTypes';
 
 export function* handleGetSearchResults({ 
-  searchTerm
-}: any) {
+  searchTerm,
+  page
+}: IGetSearchResults) {
   try {
-    const response: ISearchResponse = yield call(search, { title: searchTerm });
+    const response: ISearchResponse = yield call(searchByTitle, { title: searchTerm, page });
     if (response.status === 200) {
       yield put({
         type: GET_SEARCH_RESULTS_SUCCESS,

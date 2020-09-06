@@ -1,9 +1,10 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import Content from './Content';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { IGetSearchResults } from '../../types/actionTypes';
 
 export interface ISearchInputContainerPropTypes extends RouteComponentProps {
-  getSearchResults: (value: string) => void;
+  getSearchResults: (userInput: string) => IGetSearchResults
 }
 
 function Container({ 

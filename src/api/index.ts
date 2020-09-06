@@ -1,6 +1,10 @@
 import Axios from 'axios';
-import { ISearchPayload } from '../types';
+import { ISearchByTitlePayload } from '../types';
 
-export const search = (payload: ISearchPayload) => {
-  return Axios.post(`http://localhost:8000/search`, payload)
+export const searchByTitle = (payload: ISearchByTitlePayload) => {
+  return Axios.post(`http://localhost:8000/search/title`, payload)
 };
+
+// export const searchById = (payload: ISearchByTitlePayload) => {
+//   return Axios.post(`http://localhost:8000/search/title`, payload)
+// };

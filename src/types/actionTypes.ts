@@ -4,6 +4,7 @@ import { IMovie } from './index';
 export interface IGetSearchResults extends Action {
   type: 'search/GET_SEARCH_RESULTS';
   searchTerm: string;
+  page?: number;
 }
 
 export interface IGetSearchResultsSuccess extends Action {

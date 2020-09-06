@@ -24,6 +24,7 @@ export interface ApplicationState {
   totalResults: number;
 }
 
-export interface ISearchPayload {
+export interface ISearchByTitlePayload {
   title: string;
+  page?: number;
 }
