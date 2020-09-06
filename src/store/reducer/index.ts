@@ -8,6 +8,7 @@ import { ApplicationAction } from '../../types/actionTypes';
 export const initialState: ApplicationState = {
   isLoading: false,
   movies: [],
+  totalResults: 0,
   searchTerm: ""
 }
 
@@ -15,15 +16,16 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
   switch (action.type) {
     case GET_SEARCH_RESULTS:
       return {
-        ...initialState,
+        ...state,
         isLoading: true,
         searchTerm: action.searchTerm
       };
     case GET_SEARCH_RESULTS_SUCCESS:
       return {
-        ...initialState,
+        ...state,
         isLoading: false,
-        movies: action.movies
+        movies: action.movies,
+        totalResults: action.totalResults
       };
     default:
       return state;

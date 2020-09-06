@@ -1,15 +1,16 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IMovie } from '../../types';
-import { Container } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import NavBar from '../NavBar';
 import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 export interface ISearchResultPropTypes extends RouteComponentProps {
   searchTerm: string;
   movies: IMovie[];
   isLoading: boolean;
+  totalResults: number;
 }
 
-function SearchResult({ searchTerm, movies, isLoading }: ISearchResultPropTypes) {
+function SearchResult({ searchTerm, movies, isLoading, totalResults }: ISearchResultPropTypes) {
   const [moviesList, setMoviesList] = useState<IMovie[]>([])
 
   useEffect(() => {
@@ -24,11 +25,14 @@ function SearchResult({ searchTerm, movies, isLoading }: ISearchResultPropTypes)
 
   const renderMovieList = () => {
     return (
-      <div className="list-group">
+      <div className="list-group pl-3 pr-3 pb-3">
         {moviesList.map((movie: IMovie, index: number) => {
           return (
             <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-              {movie.Title}
+              <div className="d-flex flex-column align-items-stretch">
+                <h6 className="m-0">{movie.Title}</h6>
+                <small className="m-0">{movie.Year}</small>
+              </div>
               <div className="image-parent pl-2">
                 <img src={movie.Poster} onError={addDefaultSrc} className="img-fluid" alt={`${movie.Title} Movie Poster`}/>
               </div>
@@ -43,12 +47,14 @@ function SearchResult({ searchTerm, movies, isLoading }: ISearchResultPropTypes)
     return <div>...Loading</div>
   } else if (searchTerm) {
     return (
-      <Container className="d-flex flex-column h-100 p-1">
+      <Container className="d-flex flex-column h-100 p-0">
         <NavBar/>
-        <div className="pl-2">
-          <p className="m-0">{movies.length ? "Results" : "No results"} for <b>{searchTerm}</b></p>
+        <div>
+          <div>
+            <p className="m-0 pl-3 pr-3">{totalResults ? `${totalResults} results` : "No results"} for <b>{searchTerm}</b></p>
+          </div>
+          {movies.length !== 0 && renderMovieList()}
         </div>
-        {movies.length !== 0 && renderMovieList()}
       </Container>
     );
   } else {

@@ -11,9 +11,17 @@ body, #root {
 }
 
 .logo {
-  font-size: 70px;
+  font-size: 50px;
 }
 
 .image-parent {
   max-width: 40px;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: pink;
 }

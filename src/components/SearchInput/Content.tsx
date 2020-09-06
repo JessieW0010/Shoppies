@@ -18,7 +18,7 @@ function Content({
   return (
     <div className="search-container m-1 flex-fill">
       <div className="input-group">
-        <input type="text" className="form-control" value={userInput} onChange={handleOnChange} onKeyDown={handleOnKeyDown}/>
+        <input type="text" placeholder="Search for a movie title" className="form-control" value={userInput} onChange={handleOnChange} onKeyDown={handleOnKeyDown}/>
         <div className="input-group-append">
           <button onClick={handleSearch} className="btn btn-outline-secondary" type="button"><FontAwesomeIcon icon={faSearch} /></button>
         </div>

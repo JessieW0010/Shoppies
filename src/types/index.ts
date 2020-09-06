@@ -14,12 +14,14 @@ export interface ISearchResponse {
 interface ISearchResponseData {
   movies: IMovie[];
   Status: boolean;
+  totalResults: string;
 }
 
 export interface ApplicationState {
   isLoading: boolean;
   movies: IMovie[];
   searchTerm: string;
+  totalResults: number;
 }
 
 export interface ISearchPayload {
