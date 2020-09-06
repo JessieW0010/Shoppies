@@ -1,5 +1,5 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import { GET_SEARCH_RESULTS, GET_SEARCH_RESULTS_SUCCESS, SEARCH_RESULT_ERROR } from '../constants';
+import { GET_SEARCH_RESULTS, GET_SEARCH_RESULTS_SUCCESS, GET_SEARCH_RESULTS_ERROR } from '../constants';
 import { searchByTitle } from '../../api';
 import { ISearchResponse } from '../../types';
 import { IGetSearchResults } from '../../types/actionTypes';
@@ -19,7 +19,7 @@ export function* handleGetSearchResults({
     }
   } catch (err) {
     yield put({
-      type: SEARCH_RESULT_ERROR
+      type: GET_SEARCH_RESULTS_ERROR
     })
   }
 }

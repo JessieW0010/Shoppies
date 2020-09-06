@@ -1,6 +1,8 @@
 import {
   GET_SEARCH_RESULTS,
-  GET_SEARCH_RESULTS_SUCCESS
+  GET_SEARCH_RESULTS_SUCCESS,
+  GET_MOVIE_INFO,
+  GET_MOVIE_INFO_SUCCESS
 } from '../constants';
 import { ApplicationState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
@@ -9,7 +11,8 @@ export const initialState: ApplicationState = {
   isLoading: false,
   movies: [],
   totalResults: 0,
-  searchTerm: ""
+  searchTerm: "",
+  selectedMovie: null
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -27,6 +30,17 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         movies: action.movies,
         totalResults: action.totalResults
       };
+    case GET_MOVIE_INFO: 
+      return {
+        ...state,
+        isLoading: true
+      }
+    case GET_MOVIE_INFO_SUCCESS: 
+      return {
+        ...state,
+        isLoading: false,
+        selectedMovie: action.selectedMovie
+      }
     default:
       return state;
   }

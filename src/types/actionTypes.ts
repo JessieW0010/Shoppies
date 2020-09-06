@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { IMovie } from './index';
+import { IMovie, IMovieInfo } from './index';
 
 export interface IGetSearchResults extends Action {
   type: 'search/GET_SEARCH_RESULTS';
@@ -13,6 +13,16 @@ export interface IGetSearchResultsSuccess extends Action {
   totalResults: number;
 }
 
+export interface IGetMovieInfo extends Action {
+  type: 'search/GET_MOVIE_INFO';
+  id: string;
+}
+
+export interface IGetMovieInfoSuccess extends Action {
+  type: 'search/GET_MOVIE_INFO_SUCCESS';
+  selectedMovie: IMovieInfo;
+}
+
 export interface IGetSearchResultsError extends Action {
   type: 'search/GET_SEARCH_RESULTS_ERROR';
 }
@@ -20,4 +30,6 @@ export interface IGetSearchResultsError extends Action {
 export type ApplicationAction =
   | IGetSearchResults
   | IGetSearchResultsSuccess
+  | IGetMovieInfo
+  | IGetMovieInfoSuccess
   | IGetSearchResultsError;
