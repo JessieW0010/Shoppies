@@ -7,7 +7,7 @@ import { ApplicationAction } from '../../types/actionTypes';
 
 export const initialState: ApplicationState = {
   isLoading: false,
-  movie: null
+  movies: []
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -21,7 +21,7 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       return {
         ...initialState,
         isLoading: false,
-        movie: action.movie
+        movies: action.movies
       };
     default:
       return state;

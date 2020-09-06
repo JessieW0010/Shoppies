@@ -23,7 +23,7 @@ interface ISearchResponseData {
 
 export interface ApplicationState {
   isLoading: boolean;
-  movie: IMovie | null;
+  movies: IMovie[];
 }
 
 export interface ISearchPayload {

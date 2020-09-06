@@ -8,7 +8,7 @@ export interface IGetSearchResults extends Action {
 
 export interface IGetSearchResultsSuccess extends Action {
   type: 'search/GET_SEARCH_RESULTS_SUCCESS';
-  movie: IMovie;
+  movies: IMovie[];
 }
 
 export interface IGetSearchResultsError extends Action {

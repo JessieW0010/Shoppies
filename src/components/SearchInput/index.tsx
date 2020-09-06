@@ -3,8 +3,11 @@ import Container from './Container';
 import {
   getSearchResults
 } from '../../store/actions';
+import { ApplicationState } from '../../types';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state: ApplicationState) => ({
+  movies: state.movies
+});
 
 const mapDispatchToProps = {
   getSearchResults

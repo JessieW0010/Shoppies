@@ -1,62 +1,45 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './style.css';
 import Content from './Content';
+import { IMovie } from '../../types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-interface ISearchInputContainerPropTypes {
-  searchMovie: (value: string) => void 
-}
-
-interface ISignUpData {
-  activeOption: number,
-  filteredOptions: any[],
-  showOptions: boolean,
-  userInput: string
+interface ISearchInputContainerPropTypes extends RouteComponentProps {
+  searchMovie: (value: string) => void;
+  movies: IMovie[];
+  isLoading: boolean;
 }
 
 function Container({ 
-  getSearchResults 
+  getSearchResults,
+  movies,
+  isLoading,
+  history
 }: any) {
-  const [state, setState] = useState<ISignUpData>({
-    activeOption: 0,
-    filteredOptions: [],
-    showOptions: false,
-    userInput: ''
-  });
+  const [userInput, setUserInput] = useState<string>("");
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setState({
-      ...state,
-      userInput: event.target.value
-    });
-    getSearchResults(event.target.value);
+    setUserInput(event.target.value);
+  }
+
+  const handleSearch = (): void => {
+    if (userInput) {
+      getSearchResults(userInput);
+      history.push(`/search/${userInput}`)
+    }
   }
 
   const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    console.log('key was pressed');
-    // const { activeOption, filteredOptions } = state;
-    // if (e.keyCode === 13) {
-    //   setState({
-    //     ...state,
-    //     activeOption: 0,
-    //     showOptions: false,
-    //     userInput: filteredOptions[activeOption]
-    //   });
-    // } else if (e.keyCode === 38) {
-    //   if (activeOption === 0) {
-    //     return;
-    //   }
-    //   setState({ ...state, activeOption: activeOption - 1 });
-    // } else if (e.keyCode === 40) {
-    //   if (activeOption === filteredOptions.length - 1) {
-    //     return;
-    //   }
-    //   setState({ ...state,activeOption: activeOption + 1 });
-    // }
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
-  return (
-    <Content handleOnChange={handleOnChange} handleOnKeyDown={handleOnKeyDown} state={state} searchResults={[]}/>
+  return (isLoading ? <FontAwesomeIcon icon={faSpinner} /> :
+    <Content handleSearch={handleSearch} handleOnChange={handleOnChange} handleOnKeyDown={handleOnKeyDown} userInput={userInput} searchResults={movies}/>
   );
 }
 
-export default Container;
+export default withRouter(Container);

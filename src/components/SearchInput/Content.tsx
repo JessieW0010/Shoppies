@@ -1,30 +1,32 @@
 import React from 'react';
 import './style.css';
+import { IMovie } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 type SearchInputPropTypes = {
-  state: any,
+  userInput: string,
   handleOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
   handleOnKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void,
-  searchResults: any[]
+  searchResults: IMovie[],
+  handleSearch: () => void
 }
 
 function Content({ 
-  state, 
+  userInput,
   handleOnChange, 
   handleOnKeyDown, 
-  searchResults
+  searchResults,
+  handleSearch
 }: SearchInputPropTypes) {
   return (
     <div className="search-container">
       <div className="input-group mb-3">
-        <input type="text" className="form-control" value={state.userInput}/>
+        <input type="text" className="form-control" value={userInput} onChange={handleOnChange} onKeyDown={handleOnKeyDown}/>
         <div className="input-group-append">
-          <FontAwesomeIcon icon={faCoffee} />
+          <button onClick={handleSearch} className="btn btn-outline-secondary" type="button"><FontAwesomeIcon icon={faSearch} /></button>
         </div>
       </div>
-      {searchResults}
     </div>
   );
 }
