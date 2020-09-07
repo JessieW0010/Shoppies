@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import MovieInfo from './Container';
+import MovieInfoMobileView from './Container';
 import { ApplicationState } from '../../types';
-import { getMovieInfo } from '../../store/actions';
+import { getMovieInfo, nominateMovie } from '../../store/actions';
 
 const mapStateToProps = ({ selectedMovie, isLoading }: ApplicationState) => ({
   selectedMovie: {
@@ -19,6 +19,20 @@ const mapStateToProps = ({ selectedMovie, isLoading }: ApplicationState) => ({
     "Country": "USA, Mexico",
     "Awards": "Won 4 Oscars. Another 160 wins & 138 nominations.",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg",
+    "Ratings": [
+        {
+            "Source": "Internet Movie Database",
+            "Value": "8.1/10"
+        },
+        {
+            "Source": "Rotten Tomatoes",
+            "Value": "93%"
+        },
+        {
+            "Source": "Metacritic",
+            "Value": "91/100"
+        }
+    ],
     "Metascore": "91",
     "imdbRating": "8.1",
     "imdbVotes": "828,845",
@@ -34,7 +48,8 @@ const mapStateToProps = ({ selectedMovie, isLoading }: ApplicationState) => ({
 });
 
 const mapDispatchToProps = {
-  getMovieInfo
+  getMovieInfo,
+  nominateMovie
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfoMobileView);

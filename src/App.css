@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
-body, #root {
+body,
+#root {
   margin: 0;
   height: 100vh;
   background-color: #f1f2f3;
@@ -28,9 +29,19 @@ body, #root {
 
 .overlay-dark {
   position: absolute;
-  background-color: rgba(0,0,0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .movieInfo-container {
   background-color: #000;
+}
+
+.dark-bg {
+  background-color: #131313;
+}
+
+.btn-primary {
+  background-color: #ffbc0e !important;
+  color: black !important;
+  border-color: #ffbc0e !important;
 }

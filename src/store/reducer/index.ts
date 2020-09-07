@@ -1,8 +1,13 @@
 import {
   GET_SEARCH_RESULTS,
   GET_SEARCH_RESULTS_SUCCESS,
+  GET_SEARCH_RESULTS_ERROR,
   GET_MOVIE_INFO,
-  GET_MOVIE_INFO_SUCCESS
+  GET_MOVIE_INFO_SUCCESS,
+  GET_MOVIE_INFO_ERROR,
+  NOMINATE_MOVIE,
+  NOMINATE_MOVIE_SUCCESS,
+  NOMINATE_MOVIE_ERROR
 } from '../constants';
 import { ApplicationState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
@@ -31,6 +36,7 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         totalResults: action.totalResults
       };
     case GET_MOVIE_INFO: 
+    case NOMINATE_MOVIE: 
       return {
         ...state,
         isLoading: true
@@ -40,6 +46,11 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         ...state,
         isLoading: false,
         selectedMovie: action.selectedMovie
+      }
+    case NOMINATE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false
       }
     default:
       return state;

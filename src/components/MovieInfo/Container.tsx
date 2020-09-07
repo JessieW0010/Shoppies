@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Loader } from '../common';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { IMovieInfo } from '../../types';
-
 interface IMovieInfoProps extends RouteComponentProps {
   isLoading: boolean;
-  selectedMovie: IMovieInfo;
+  selectedMovie: IMovieInfo | null;
+  nominateMovie: (id: string) => void;
+  getMovieInfo: (id: string) => void;
 }
 
-function MovieInfo({ isLoading, selectedMovie, history }: IMovieInfoProps) {
+function MovieInfoMobileView({ 
+  isLoading, 
+  selectedMovie, 
+  history,
+  nominateMovie,
+  getMovieInfo
+}: IMovieInfoProps) {
+
+  useEffect(() => {
+    const id = history.location.pathname.split("/").pop();
+    if (!selectedMovie && id) {
+      getMovieInfo(id);
+    }
+  }, [selectedMovie])
+
   const [display, toggleDisplay] = useState<boolean>(false)
+
+  const handleNomination = () => {
+    nominateMovie("1");
+  }
 
   if (isLoading) {
     return <Loader/>;
-  } else {
+  } else if (selectedMovie) {
     const { 
       Title, 
       Poster, 
@@ -101,13 +120,15 @@ function MovieInfo({ isLoading, selectedMovie, history }: IMovieInfoProps) {
               <small className="col-9">{Rated}</small>
             </div>
           </div>
-          <div className="mt-3">
 
-          </div>
+          {/* *** Nominate Btn *** */}
+          <button onClick={handleNomination} type="button" className="btn btn-primary btn-sm w-100 mt-3">Nominate</button>
         </div>
       </Container>
     )
+  } else {
+    return <div>hihi</div>
   }
 }
 
-export default withRouter(MovieInfo);
+export default withRouter(MovieInfoMobileView);
