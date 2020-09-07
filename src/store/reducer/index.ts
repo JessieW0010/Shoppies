@@ -14,10 +14,17 @@ import {
   REGISTER,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
-  SET_USER
+  SET_USER,
+  LOGOUT_SUCCESS,
+  LOGOUT
 } from '../constants';
-import { ApplicationState } from '../../types';
+import { ApplicationState, IErrorState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
+
+const initialErrorState: IErrorState = {
+  login: null,
+  register: null
+}
 
 export const initialState: ApplicationState = {
   isLoading: false,
@@ -26,7 +33,8 @@ export const initialState: ApplicationState = {
   searchTerm: "",
   selectedMovie: null,
   user: null,
-  nominations: []
+  nominations: [],
+  error: initialErrorState
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -35,18 +43,22 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       return {
         ...state,
         isLoading: true,
+        error: initialErrorState,
         searchTerm: action.searchTerm
       };
     case GET_SEARCH_RESULTS_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        error: initialErrorState,
         movies: action.movies,
         totalResults: action.totalResults
       };
     case GET_MOVIE_INFO: 
     case SIGN_IN: 
     case NOMINATE_MOVIE: 
+    case REGISTER:
+    case LOGOUT:
       return {
         ...state,
         isLoading: true
@@ -55,12 +67,14 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       return {
         ...state,
         isLoading: false,
+        error: initialErrorState,
         selectedMovie: action.selectedMovie
       }
     case NOMINATE_MOVIE_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        error: initialErrorState,
         nominations: [
           ...state.nominations,
           action.movie
@@ -68,9 +82,25 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       }
     case SIGN_IN_SUCCESS:
     case SET_USER:
+    case REGISTER_SUCCESS:
       return {
         ...state,
         user: action.user,
+        error: initialErrorState,
+        isLoading: false
+      }
+    case REGISTER_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: {
+          ...state.error,
+          register: 409
+        }
+      }
+    case LOGOUT_SUCCESS:
+      return {
+        ...initialState,
         isLoading: false
       }
     default:

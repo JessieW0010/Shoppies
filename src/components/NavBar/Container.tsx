@@ -16,7 +16,9 @@ function NavBar() {
         />
       </a>
       <SearchInput />
-      <Avatar />
+      <div>
+        <Avatar />
+      </div>
     </nav>
   );
 }

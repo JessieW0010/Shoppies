@@ -62,10 +62,12 @@ export interface IRegister extends Action {
 
 export interface IRegisterSuccess extends Action {
   type: 'REGISTER_SUCCESS';
+  user: IUser;
 }
 
 export interface IRegisterError extends Action {
   type: 'REGISTER_ERROR';
+  status: number;
 }
 
 // *** SignIn ***
@@ -94,6 +96,10 @@ export interface ISetUser extends Action {
 
 export interface ILogout extends Action {
   type: 'LOGOUT';
+}
+
+export interface ILogoutSuccess extends Action {
+  type: 'LOGOUT_SUCCESS';
 }
 
 export interface IGetUserMovies extends Action {
@@ -128,4 +134,5 @@ export type ApplicationAction =
   | IGetUserMoviesSuccess
   | IGetUserMoviesError
   | ISetUser
-  | ILogout;
+  | ILogout
+  | ILogoutSuccess;

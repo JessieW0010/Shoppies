@@ -1,24 +1,31 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { REGISTER, REGISTER_SUCCESS, REGISTER_ERROR } from '../constants';
 import { register } from '../../api';
-import { IRegisterResponse } from '../../types';
+import { ISignInResponse } from '../../types';
 import { IRegister } from '../../types/actionTypes';
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 export function* handleRegister({ 
   payload,
   history
 }: IRegister) {
   try {
-    const response: IRegisterResponse = yield call(register, payload);
+    const response: ISignInResponse = yield call(register, payload);
     if (response.status === 200) {
+      const token = response.data.token;
+      localStorage.setItem('jwtToken', token);
+      axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
       yield put({
-        type: REGISTER_SUCCESS
+        type: REGISTER_SUCCESS,
+        user: jwt_decode(token)
       })
-      history.push("/login");
+      history.push("/");
     }
   } catch (err) {
     yield put({
-      type: REGISTER_ERROR
+      type: REGISTER_ERROR,
+      status: 409
     })
   }
 }

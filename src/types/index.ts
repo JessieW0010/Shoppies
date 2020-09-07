@@ -22,10 +22,6 @@ export interface ISearchMovieInfoResponse {
   };
 }
 
-export interface IRegisterResponse {
-  status: number;
-}
-
 export interface ISignInResponse {
   status: number;
   data: {
@@ -35,6 +31,9 @@ export interface ISignInResponse {
 
 export interface INominateMovieResponse {
   status: number;
+  data: {
+    nominated: string[]
+  }
 }
 
 export interface IMovieInfo {
@@ -68,12 +67,20 @@ export interface ApplicationState {
   selectedMovie: IMovieInfo | null;
   user: IUser | null;
   nominations: IMovieInfo[];
+  error: IErrorState;
+}
+
+export interface IErrorState {
+  register: number | null;
+  login: number | null;
 }
 
 export interface IUser {
   email: string;
   first_name: string;
   last_name: string;
+  id: number;
+  iat: number;
 }
 
 export interface ISearchByTitlePayload {

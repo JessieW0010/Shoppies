@@ -5,6 +5,7 @@ import watchSignIn from './handleSignIn';
 import watchRegister from './handleRegister';
 import watchNominateMovie from './handleNomination';
 import watchGetUserMovies from './handleGetUserMovies';
+import watchLogout from './handleLogout';
 
 export default function* rootSaga() {
   yield all([
@@ -13,7 +14,8 @@ export default function* rootSaga() {
     watchSignIn(),
     watchRegister(),
     watchNominateMovie(),
-    watchGetUserMovies()
+    watchGetUserMovies(),
+    watchLogout()
   ]);
 }
 

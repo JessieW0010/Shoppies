@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive'
 import { IRegisterPayload } from '../../types';
-import { IRegister } from '../../types/actionTypes';
 import { History } from 'history';
 interface IRegisterProps extends RouteComponentProps {
   register: (payload: IRegisterPayload, history: History) => void;
+  serverError: number | null;
 }
 
 function Register({
   history,
-  register
+  register,
+  serverError
 }: IRegisterProps) {
   const [state, setState] = useState({
     first_name: "",
@@ -23,10 +24,15 @@ function Register({
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 725px)' })
 
   const signUp = () => {
-    // need to add proper validators and errors
     const { first_name, last_name, email, password, confirm_password } = state;
-    if (first_name && last_name && email && password && (password === confirm_password)) {
-      register(state, history);
+    if (first_name && last_name && email && password && confirm_password) {
+      if (password !== confirm_password) {
+        setError("Passwords don't match.")
+      } else {
+        register(state, history);
+      }
+    } else {
+      setError("You must complete all the fields below.");
     }
   }
 
@@ -36,7 +42,14 @@ function Register({
       ...prevState,
       [name]: value
     }));
+    setError("");
   };
+
+  const renderErrorMsg = () => {
+    return (
+      <p className="p-1 m-0 text-danger form-error">{serverError ? "An account under this email already exists." : error}</p>
+    )
+  }
 
   return (
     <div className="dark-bg h-100 w-100 p-0 m-0 d-flex flex-column align-items-center overflow-auto">
@@ -46,6 +59,7 @@ function Register({
         <small className="text-left w-100 text-white">Already have an account? <a href="/login">Login</a></small>
       </div>
       <div className="w-75">
+        {(error || serverError) && renderErrorMsg()}
         <div className="row p-1 m-0">
           <div className={`col-sm p-0 ${!isTabletOrMobile && "pr-2"}`}>
             <label className="text-light">First Name</label>

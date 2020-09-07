@@ -10,7 +10,7 @@ function Welcome({ history }: RouteComponentProps) {
       </div>
       <div className="row justify-content-center">
         <button onClick={() => history.push("/register")} type="button" className="btn btn-primary btn-sm w-50 m-3">Sign Up</button>
-        <button onClick={() => history.push("/signin")} type="button" className="btn btn-primary btn-sm w-50 m-3">Login</button>
+        <button onClick={() => history.push("/login")} type="button" className="btn btn-primary btn-sm w-50 m-3">Login</button>
       </div>
     </div>
   )

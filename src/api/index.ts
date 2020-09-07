@@ -6,27 +6,29 @@ import {
   IRegisterPayload,
   INominateMoviePayload
 } from '../types';
+// const API_URL = "https://frozen-dusk-95287.herokuapp.com";
+const API_URL = "http://localhost:8000";
 
 export const searchByTitle = (payload: ISearchByTitlePayload) => {
-  return Axios.post(`http://localhost:8000/search/title`, payload);
+  return Axios.post(`${API_URL}/search/title`, payload);
 };
 
 export const searchById = (payload: ISearchByIdPayload) => {
-  return Axios.post(`http://localhost:8000/search/id`, payload);
+  return Axios.post(`${API_URL}/search/id`, payload);
 };
 
 export const login = (payload: ISignInPayload) => {
-  return Axios.post(`http://localhost:8000/auth/login`, payload);
+  return Axios.post(`${API_URL}/auth/login`, payload);
 };
 
 export const register = (payload: IRegisterPayload) => {
-  return Axios.post(`http://localhost:8000/auth/register`, payload);
+  return Axios.post(`${API_URL}/auth/register`, payload);
 };
 
 export const nominateMovie = (payload: INominateMoviePayload) => {
-  return Axios.post(`http://localhost:8000/nominate`, payload);
+  return Axios.post(`${API_URL}/nominate`, payload);
 };
 
 export const getNominatedMovies = () => {
-  return Axios.get(`http://localhost:8000/nominate`);
+  return Axios.get(`${API_URL}/nominate`);
 };

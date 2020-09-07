@@ -80,3 +80,20 @@ h1, h2, h3, h4, h5, h6, p, small {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.form-error {
+  font-size: 70%;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}

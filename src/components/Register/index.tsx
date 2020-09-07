@@ -3,7 +3,8 @@ import Register from './Container';
 import { ApplicationState } from '../../types';
 import { register } from '../../store/actions';
 
-const mapStateToProps = ({}: ApplicationState) => ({
+const mapStateToProps = ({ error }: ApplicationState) => ({
+  serverError: error.register
 });
 
 const mapDispatchToProps = {

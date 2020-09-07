@@ -5,14 +5,13 @@ import { INominateMovieResponse } from '../../types';
 import { INominateMovie } from '../../types/actionTypes';
 export function* handleGetUserMovies() {
   try {
-    console.log('hihi')
     const response: INominateMovieResponse = yield call(getNominatedMovies);
     if (response.status === 200) {
-      console.log(response)
-      // yield put({
-      //   type: GET_USER_MOVIES_SUCCESS,
-      //   movie
-      // })
+      console.log(response.data.nominated)
+      yield put({
+        type: GET_USER_MOVIES_SUCCESS,
+        nominated: []
+      })
     }
   } catch (err) {
     yield put({

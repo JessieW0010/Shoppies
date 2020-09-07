@@ -8,7 +8,11 @@ const mapDispatchToProps = {
   logout
 };
 
-function HomePage() {
+interface IHomePageProps {
+  logout: () => void;
+}
+
+function HomePage({ logout }: IHomePageProps) {
   return (
     <div className='dark-bg h-100 w-100 p-0 m-0'>
       <div className='sticky-top bg-faded justify-content-end'>
