@@ -5,6 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from './store'
 import { BrowserRouter } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import axios from 'axios';
+import { setUser } from './store/actions';
+
+if (localStorage.jwtToken) {
+  axios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.jwtToken;
+  store.dispatch(setUser(jwtDecode(localStorage.jwtToken)));
+}
 
 ReactDOM.render(
   <Provider store={store}>

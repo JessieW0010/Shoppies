@@ -23,10 +23,6 @@ body,
   cursor: pointer;
 }
 
-.navbar {
-  background-color: #f1f2f3;
-}
-
 .overlay-dark {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
@@ -44,4 +40,10 @@ body,
   background-color: #ffbc0e !important;
   color: black !important;
   border-color: #ffbc0e !important;
+}
+
+.avatar {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

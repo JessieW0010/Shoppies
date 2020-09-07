@@ -1,15 +1,8 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
-import { IMovie } from '../../types';
-import { Container } from 'react-bootstrap';
+import React from 'react';
 import SearchInput from '../SearchInput';
-import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export interface INavBarPropTypes extends RouteComponentProps {
-}
-
-function NavBar({
-  history
-}: INavBarPropTypes) {
+function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg sticky-top bg-faded">
       <a className="navbar-brand" href="/">

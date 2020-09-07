@@ -17,7 +17,6 @@ function SignIn({
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    console.log(name, value)
     setState(prevState => ({
       ...prevState,
       [name]: value
