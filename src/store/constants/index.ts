@@ -13,3 +13,7 @@ export const NOMINATE_MOVIE_ERROR = 'search/NOMINATE_MOVIE_ERROR';
 export const REGISTER = 'search/REGISTER';
 export const REGISTER_SUCCESS = 'search/REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'search/REGISTER_ERROR';
+
+export const SIGN_IN = 'search/SIGN_IN';
+export const SIGN_IN_SUCCESS = 'search/SIGN_IN_SUCCESS';
+export const SIGN_IN_ERROR = 'search/SIGN_IN_ERROR';

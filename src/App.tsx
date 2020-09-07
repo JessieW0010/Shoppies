@@ -7,6 +7,7 @@ import HomePage from './components/HomePage';
 import MovieInfo from './components/MovieInfo';
 import Register from './components/Register';
 import Welcome from './components/Welcome';
+import SignIn from './components/SignIn';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/movie/:id" component={MovieInfo} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/signin" component={SignIn} />
       <Route exact path="/welcome" component={Welcome} />
     </Switch>
   );

@@ -7,7 +7,13 @@ import {
   GET_MOVIE_INFO_ERROR,
   NOMINATE_MOVIE,
   NOMINATE_MOVIE_SUCCESS,
-  NOMINATE_MOVIE_ERROR
+  NOMINATE_MOVIE_ERROR,
+  SIGN_IN,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_ERROR,
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR
 } from '../constants';
 import { ApplicationState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
@@ -17,7 +23,8 @@ export const initialState: ApplicationState = {
   movies: [],
   totalResults: 0,
   searchTerm: "",
-  selectedMovie: null
+  selectedMovie: null,
+  user: null
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -37,6 +44,7 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       };
     case GET_MOVIE_INFO: 
     case NOMINATE_MOVIE: 
+    case SIGN_IN: 
       return {
         ...state,
         isLoading: true
@@ -51,6 +59,11 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
       return {
         ...state,
         isLoading: false
+      }
+    case SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        user: action.user
       }
     default:
       return state;

@@ -1,5 +1,6 @@
 import { Action } from 'redux';
-import { IMovie, IMovieInfo } from './index';
+import { IMovie, IMovieInfo, IRegisterPayload, IUser } from './index';
+import { History } from 'history';
 
 // *** Search Title ***
 export interface IGetSearchResults extends Action {
@@ -53,10 +54,7 @@ export interface INominateMovieError extends Action {
 
 export interface IRegister extends Action {
   type: 'search/REGISTER';
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
+  payload: IRegisterPayload;
 }
 
 export interface IRegisterSuccess extends Action {
@@ -65,6 +63,24 @@ export interface IRegisterSuccess extends Action {
 
 export interface IRegisterError extends Action {
   type: 'search/REGISTER_ERROR';
+}
+
+// *** SignIn ***
+
+export interface ISignIn extends Action {
+  type: 'search/SIGN_IN';
+  email: string;
+  password: string;
+  history: History;
+}
+
+export interface ISignInSuccess extends Action {
+  type: 'search/SIGN_IN_SUCCESS';
+  user: IUser;
+}
+
+export interface ISignInError extends Action {
+  type: 'search/SIGN_IN_ERROR';
 }
 
 export type ApplicationAction =
@@ -76,4 +92,10 @@ export type ApplicationAction =
   | IGetMovieInfoError
   | INominateMovie
   | INominateMovieSuccess
-  | INominateMovieError;
+  | INominateMovieError
+  | IRegister
+  | IRegisterSuccess
+  | IRegisterError
+  | ISignIn
+  | ISignInSuccess
+  | ISignInError;
