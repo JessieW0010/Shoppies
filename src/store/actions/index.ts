@@ -1,6 +1,6 @@
-import { IGetSearchResults, IGetMovieInfo, INominateMovie, IRegister, ISignIn } from '../../types/actionTypes';
-import { GET_SEARCH_RESULTS, GET_MOVIE_INFO, NOMINATE_MOVIE, REGISTER, SIGN_IN } from '../constants';
-import { IRegisterPayload } from '../../types';
+import { IGetSearchResults, IGetMovieInfo, INominateMovie, IRegister, ISignIn, ISetUser } from '../../types/actionTypes';
+import { GET_SEARCH_RESULTS, GET_MOVIE_INFO, NOMINATE_MOVIE, REGISTER, SIGN_IN, SET_USER } from '../constants';
+import { IRegisterPayload, IUser } from '../../types';
 import { History } from 'history';
 
 export const getSearchResults = (searchTerm: string, page?: number): IGetSearchResults => ({
@@ -29,4 +29,9 @@ export const signIn = (email: string, password: string, history: History): ISign
   email,
   password,
   history
+});
+
+export const setUser = (user: IUser): ISetUser => ({
+  type: SET_USER,
+  user
 });

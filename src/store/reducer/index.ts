@@ -13,7 +13,8 @@ import {
   SIGN_IN_ERROR,
   REGISTER,
   REGISTER_SUCCESS,
-  REGISTER_ERROR
+  REGISTER_ERROR,
+  SET_USER
 } from '../constants';
 import { ApplicationState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
@@ -61,9 +62,11 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         isLoading: false
       }
     case SIGN_IN_SUCCESS:
+    case SET_USER:
       return {
         ...state,
-        user: action.user
+        user: action.user,
+        isLoading: false
       }
     default:
       return state;
