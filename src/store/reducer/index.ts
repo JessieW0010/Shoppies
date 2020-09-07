@@ -16,7 +16,10 @@ import {
   REGISTER_ERROR,
   SET_USER,
   LOGOUT_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  GET_USER_MOVIES,
+  GET_USER_MOVIES_SUCCESS,
+  GET_USER_MOVIES_ERROR
 } from '../constants';
 import { ApplicationState, IErrorState } from '../../types';
 import { ApplicationAction } from '../../types/actionTypes';
@@ -59,9 +62,16 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
     case NOMINATE_MOVIE: 
     case REGISTER:
     case LOGOUT:
+    case GET_USER_MOVIES:
       return {
         ...state,
         isLoading: true
+      }
+    case GET_USER_MOVIES_SUCCESS: 
+      return {
+        ...state,
+        isLoading: false,
+        nominations: action.nominations
       }
     case GET_MOVIE_INFO_SUCCESS: 
       return {

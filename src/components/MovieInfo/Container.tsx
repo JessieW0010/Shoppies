@@ -229,7 +229,7 @@ function MovieInfo({
       );
     }
   } else {
-    return <Redirect to='/' />;
+    return <div>hi</div>;
   }
 }
 

@@ -32,7 +32,7 @@ export interface ISignInResponse {
 export interface INominateMovieResponse {
   status: number;
   data: {
-    nominated: string[]
+    nominated: { imdbID: string }[]
   }
 }
 

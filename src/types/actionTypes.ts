@@ -107,7 +107,7 @@ export interface IGetUserMovies extends Action {
 }
 export interface IGetUserMoviesSuccess extends Action {
   type: 'GET_USER_MOVIES_SUCCESS';
-  movies: IMovieInfo[];
+  nominations: IMovieInfo[];
 }
 
 export interface IGetUserMoviesError extends Action {

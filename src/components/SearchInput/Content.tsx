@@ -19,7 +19,7 @@ function Content({
   return (
     <div className={`m-1 ${isTabletOrMobile ? "flex-fill" : "w-50"}`}>
       <div className="input-group">
-      <input type="text" placeholder="Search for a movie title" className="form-control" value={userInput} onChange={handleOnChange} onKeyDown={handleOnKeyDown}/>
+      <input type="text" placeholder="Search for a movie title..." className="form-control" value={userInput} onChange={handleOnChange} onKeyDown={handleOnKeyDown}/>
         <div className="input-group-append">
           <button onClick={handleSearch} className="btn bg-light" type="button"><FontAwesomeIcon icon={faSearch} /></button>
         </div>
