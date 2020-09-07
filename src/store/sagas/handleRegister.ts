@@ -5,7 +5,8 @@ import { IRegisterResponse } from '../../types';
 import { IRegister } from '../../types/actionTypes';
 
 export function* handleRegister({ 
-  payload
+  payload,
+  history
 }: IRegister) {
   try {
     const response: IRegisterResponse = yield call(register, payload);
@@ -13,6 +14,7 @@ export function* handleRegister({
       yield put({
         type: REGISTER_SUCCESS
       })
+      history.push("/login");
     }
   } catch (err) {
     yield put({

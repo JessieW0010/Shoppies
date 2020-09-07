@@ -6,6 +6,7 @@ import NavBar from '../NavBar';
 import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 import { IGetSearchResults, IGetMovieInfo } from '../../types/actionTypes';
 import { History } from 'history';
+import addDefaultSrc from '../../helpers/addDefaultSrc';
 export interface ISearchResultPropTypes extends RouteComponentProps {
   searchTerm: string;
   movies: IMovie[];
@@ -25,10 +26,6 @@ function SearchResult({
   getMovieInfo
 }: ISearchResultPropTypes) {
   const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const addDefaultSrc = (e: any) => {
-    e.target.src = require('../../assets/images/broken_img.jpg');
-  }
 
   const handleOnMovieClicked = (id: string) => {
     getMovieInfo(id, history);

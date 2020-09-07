@@ -56,6 +56,7 @@ export interface INominateMovieError extends Action {
 export interface IRegister extends Action {
   type: 'REGISTER';
   payload: IRegisterPayload;
+  history: History;
 }
 
 export interface IRegisterSuccess extends Action {

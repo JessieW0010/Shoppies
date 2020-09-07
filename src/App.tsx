@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/movie/:id" component={MovieInfo} />
       <Route exact path="/register" component={Register} />
-      <Route exact path="/signin" component={SignIn} />
+      <Route exact path="/login" component={SignIn} />
       <Route exact path="/welcome" component={Welcome} />
     </Switch>
   );

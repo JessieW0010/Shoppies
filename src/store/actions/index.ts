@@ -20,9 +20,10 @@ export const nominateMovie = (id: string): INominateMovie => ({
   id
 });
 
-export const register = (payload: IRegisterPayload): IRegister => ({
+export const register = (payload: IRegisterPayload, history: History): IRegister => ({
   type: REGISTER,
-  payload
+  payload,
+  history
 });
 
 export const signIn = (email: string, password: string, history: History): ISignIn => ({

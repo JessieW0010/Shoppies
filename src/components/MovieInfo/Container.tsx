@@ -7,6 +7,7 @@ import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 import { IMovieInfo } from '../../types';
 import { useMediaQuery } from 'react-responsive'
 import { History } from 'history';
+import addDefaultSrc from '../../helpers/addDefaultSrc';
 interface IMovieInfoProps extends RouteComponentProps {
   isLoading: boolean;
   selectedMovie: IMovieInfo | null;
@@ -97,10 +98,14 @@ function MovieInfo({
 
   const renderPlot = (Plot: string) => {
     return (
-      <div className="mt-4">
+      <div className="mt-4 w-100">
         <small className="text-muted">Plot: </small>
-        <p className="m-0">{display ? Plot : `${Plot.slice(0, 300)}...`}</p>
-        <small onClick={() => toggleDisplay(!display)} className="text-muted float-right">{display ? "Show less" : "Show more"}</small>
+        {Plot.length > 300 ? (
+          <>
+            <p className="m-0">{display ? Plot : `${Plot.slice(0, 300)}...`}</p>
+            <small onClick={() => toggleDisplay(!display)} className="text-muted float-right">{display ? "Show less" : "Show more"}</small>
+          </>
+        ) : <p className="m-0">{Plot}</p>}
       </div>
     )
   }
@@ -164,7 +169,7 @@ function MovieInfo({
           </div>
           <div className="row m-0 pt-3">
             <div className="col-4 p-3 d-flex flex-column align-items-center">
-              <img src={Poster} className="img-fluid w-75 shadow-lg rounded" alt={`${Title} Movie Poster`}/>
+              <img src={Poster === "N/A" ? require("../../assets/images/no_img.jpg") : Poster} onError={addDefaultSrc} className="img-fluid w-75 shadow-lg rounded" alt={`${Title} Movie Poster`}/>
               {renderRatings(imdbRating, imdbVotes)}
               {nominationBtn}
             </div>
