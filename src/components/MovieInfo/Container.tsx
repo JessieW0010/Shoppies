@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { Loader } from '../common';
+import { Avatar } from '../common';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 import { IMovieInfo } from '../../types';
+import { useMediaQuery } from 'react-responsive'
+import { History } from 'history';
 interface IMovieInfoProps extends RouteComponentProps {
   isLoading: boolean;
   selectedMovie: IMovieInfo | null;
   nominateMovie: (id: string) => void;
-  getMovieInfo: (id: string) => void;
+  getMovieInfo: (id: string, history?: History) => void;
 }
 
-function MovieInfoMobileView({ 
+function MovieInfo({ 
   isLoading, 
   selectedMovie, 
   history,
   nominateMovie,
   getMovieInfo
 }: IMovieInfoProps) {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 725px)' })
 
   useEffect(() => {
     const id = history.location.pathname.split("/").pop();
@@ -33,102 +36,153 @@ function MovieInfoMobileView({
     nominateMovie("1");
   }
 
-  if (isLoading) {
-    return <Loader/>;
-  } else if (selectedMovie) {
+  const renderMoreInfo = (selectedMovie: IMovieInfo) => {
+    const { 
+      Director, 
+      Actors, 
+      Writer,  
+      Country, 
+      Language,
+      Rated,
+      Awards,
+    } = selectedMovie;
+    return (
+      <div className="mt-5 w-100">
+        <div className="row">
+          <small className="text-muted col-3">Directed by: </small>
+          <small className="col-9">{Director}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Written by: </small>
+          <small className="col-9">{Writer}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Starring: </small>
+          <small className="col-9">{Actors}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Awards: </small>
+          <small className="col-9">{Awards}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Country: </small>
+          <small className="col-9">{Country}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Language: </small>
+          <small className="col-9">{Language}</small>
+        </div>
+        <div className="row">
+          <small className="text-muted col-3">Rated: </small>
+          <small className="col-9">{Rated}</small>
+        </div>
+      </div>
+    )
+  }
+
+  const renderRatings = (imdbRating: string, imdbVotes: string) => {
+    return (
+      <div className="row pt-4">
+        <span className="col-6 d-flex flex-column align-items-center">
+          <p className="m-0">{imdbRating}</p>
+          <small className="text-muted">IMDB Rating</small>
+        </span>
+        <span className="col-6 d-flex flex-column align-items-center">
+          <p className="m-0">{imdbVotes}</p>
+          <small className="text-muted">Votes</small>
+        </span>
+      </div>
+    )
+  }
+
+  const renderPlot = (Plot: string) => {
+    return (
+      <div className="mt-4">
+        <small className="text-muted">Plot: </small>
+        <p className="m-0">{display ? Plot : `${Plot.slice(0, 300)}...`}</p>
+        <small onClick={() => toggleDisplay(!display)} className="text-muted float-right">{display ? "Show less" : "Show more"}</small>
+      </div>
+    )
+  }
+
+  const nominationBtn = (
+    <div className="d-flex flex-column align-items-center w-100">
+      <button onClick={handleNomination} type="button" className="btn btn-primary btn-sm w-75 mt-3">Nominate</button>
+    </div>
+  );
+
+  if (selectedMovie) {
     const { 
       Title, 
       Poster, 
       Genre, 
       Year, 
       Plot, 
-      Director, 
-      Actors, 
-      Writer, 
-      Runtime, 
-      Country, 
-      Language,
-      Rated,
-      Awards,
+      Runtime,
       imdbRating,
       imdbVotes
     } = selectedMovie;
-    return (
-      <Container className="movieInfo-container d-flex flex-column h-100 p-0">
-        <img src={Poster} className="w-100 img-fluid" alt={`${Title} Movie Poster`}/>
-        <div className="card-img-overlay text-white overlay-dark overflow-auto">
-          <div className="pt-2 pb-5">
-            <FontAwesomeIcon onClick={() => history.goBack()} size="2x" icon={faChevronLeft}/>
-            <img width="35px" height="35px" src={require("../../assets/images/avatar.png")} className="rounded float-right" alt="avatar"></img>
-          </div>
 
-          {/* *** Title *** */}
-          <div>
-            <small className="text-muted">{Year}</small>
-            <h4 className="m-0">{Title}</h4>
-            <small className="text-muted">{Genre}</small>
-            <small className="text-muted float-right">{Runtime}</small>
-          </div>
+    if (isTabletOrMobile) {
+      return (
+        <Container className="d-flex flex-column h-100 p-0">
+          <img src={Poster} className="w-100 img-fluid" alt={`${Title} Movie Poster`}/>
+          <div className="card-img-overlay text-white overlay-dark overflow-auto">
+            <div className="pt-2 pb-5">
+              <FontAwesomeIcon onClick={() => history.goBack()} size="2x" icon={faChevronLeft}/>
+              <Avatar name="Jessie"/>
+            </div>
 
-          {/* *** Ratings *** */}
-          <div className="row pt-4">
-            <span className="col-6 d-flex flex-column align-items-center">
-              <p className="m-0">{imdbRating}</p>
-              <small className="text-muted">IMDB Rating</small>
-            </span>
-            <span className="col-6 d-flex flex-column align-items-center">
-              <p className="m-0">{imdbVotes}</p>
-              <small className="text-muted">Votes</small>
-            </span>
-          </div>
+            {/* *** Title *** */}
+            <div>
+              <small className="text-muted">{Year}</small>
+              <h4 className="m-0">{Title}</h4>
+              <small className="text-muted">{Genre}</small>
+              <small className="text-muted float-right">{Runtime}</small>
+            </div>
 
-          {/* *** Plot *** */}
-          <div className="mt-4">
-            <small className="text-muted">Plot: </small>
-            <p className="m-0">{display ? Plot : `${Plot.slice(0, 300)}...`}</p>
-            <small onClick={() => toggleDisplay(!display)} className="text-muted float-right">{display ? "Show less" : "Show more"}</small>
-          </div>
+            {renderRatings(imdbRating, imdbVotes)}
 
-          {/* *** More Info *** */}
-          <div className="mt-5">
-            <div className="row">
-              <small className="text-muted col-3">Directed by: </small>
-              <small className="col-9">{Director}</small>
+            {renderPlot(Plot)}
+
+            {renderMoreInfo(selectedMovie)}
+
+            {nominationBtn}
+
+          </div>
+        </Container>
+      )
+    } else {
+      return (
+        <div className="d-flex flex-column h-100 p-0">
+          <div className="text-white pt-4 pb-2 pl-3 pr-2">
+            <div className="d-flex align-items-center">
+              <FontAwesomeIcon onClick={() => history.goBack()} size="2x" icon={faChevronLeft}/>
+              <h4 className="movie-title m-0 pl-3">{Title} ({Year})</h4>
             </div>
-            <div className="row">
-              <small className="text-muted col-3">Written by: </small>
-              <small className="col-9">{Writer}</small>
+            <Avatar name="Jessie"/>
+          </div>
+          <div className="row m-0 pt-3">
+            <div className="col-4 p-3 d-flex flex-column align-items-center">
+              <img src={Poster} className="img-fluid w-75 shadow-lg rounded" alt={`${Title} Movie Poster`}/>
+              {renderRatings(imdbRating, imdbVotes)}
+              {nominationBtn}
             </div>
-            <div className="row">
-              <small className="text-muted col-3">Starring: </small>
-              <small className="col-9">{Actors}</small>
-            </div>
-            <div className="row">
-              <small className="text-muted col-3">Awards: </small>
-              <small className="col-9">{Awards}</small>
-            </div>
-            <div className="row">
-              <small className="text-muted col-3">Country: </small>
-              <small className="col-9">{Country}</small>
-            </div>
-            <div className="row">
-              <small className="text-muted col-3">Language: </small>
-              <small className="col-9">{Language}</small>
-            </div>
-            <div className="row">
-              <small className="text-muted col-3">Rated: </small>
-              <small className="col-9">{Rated}</small>
+            <div className="col-7 d-flex flex-column align-items-center">
+
+              {/* *** Plot *** */}
+              {renderPlot(Plot)}
+
+              {renderMoreInfo(selectedMovie)}
+
             </div>
           </div>
-
-          {/* *** Nominate Btn *** */}
-          <button onClick={handleNomination} type="button" className="btn btn-primary btn-sm w-100 mt-3">Nominate</button>
         </div>
-      </Container>
-    )
+      )
+    }
   } else {
-    return <div>hihi</div>
+    return <Redirect to="/"/>
   }
 }
 
-export default withRouter(MovieInfoMobileView);
+export default withRouter(MovieInfo);

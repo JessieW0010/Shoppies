@@ -4,7 +4,11 @@ body,
 #root {
   margin: 0;
   height: 100vh;
-  background-color: #f1f2f3;
+  background-color: #131313;
+}
+
+h1, h2, h3, h4, h5, h6, p, small {
+  color: #fff;
 }
 
 .app {
@@ -36,14 +40,35 @@ body,
   background-color: #131313;
 }
 
+.list-group-item {
+  background-color: #1f1f1f !important;
+}
+
 .btn-primary {
   background-color: #ffbc0e !important;
   color: black !important;
   border-color: #ffbc0e !important;
 }
 
+.page-link.active .page-link {
+  background-color: #4f6073 !important;
+}
+
+.page-link:hover {
+  cursor: pointer;
+}
+
+.page-link, .page-item.disabled .page-link {
+  background-color: #202020 !important;
+  border-color: #202020 !important;
+}
+
 .avatar {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.movie-title {
+  font-size: 2em;
 }

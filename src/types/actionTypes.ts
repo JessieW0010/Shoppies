@@ -24,6 +24,7 @@ export interface IGetSearchResultsError extends Action {
 export interface IGetMovieInfo extends Action {
   type: 'GET_MOVIE_INFO';
   id: string;
+  history?: History;
 }
 
 export interface IGetMovieInfoSuccess extends Action {

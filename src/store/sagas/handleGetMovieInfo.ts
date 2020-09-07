@@ -5,7 +5,8 @@ import { ISearchMovieInfoResponse } from '../../types';
 import { IGetMovieInfo } from '../../types/actionTypes';
 
 export function* handleGetMovieInfo({ 
-  id
+  id,
+  history
 }: IGetMovieInfo) {
   try {
     const response: ISearchMovieInfoResponse = yield call(searchById, { id });
@@ -14,6 +15,9 @@ export function* handleGetMovieInfo({
         type: GET_MOVIE_INFO_SUCCESS,
         selectedMovie: response.data.movie
       })
+      if (history) { 
+        history.push(`/movie/${id}`);
+      }
     }
   } catch (err) {
     yield put({

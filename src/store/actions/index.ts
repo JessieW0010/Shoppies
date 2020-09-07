@@ -9,9 +9,10 @@ export const getSearchResults = (searchTerm: string, page?: number): IGetSearchR
   page
 });
 
-export const getMovieInfo = (id: string): IGetMovieInfo => ({
+export const getMovieInfo = (id: string, history?: History): IGetMovieInfo => ({
   type: GET_MOVIE_INFO,
-  id
+  id,
+  history
 });
 
 export const nominateMovie = (id: string): INominateMovie => ({
