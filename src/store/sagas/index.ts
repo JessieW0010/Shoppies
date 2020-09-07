@@ -3,13 +3,15 @@ import watchGetSearchResults from './handleGetResults';
 import watchGetMovieInfo from './handleGetMovieInfo';
 import watchSignIn from './handleSignIn';
 import watchRegister from './handleRegister';
+import watchNominateMovie from './handleNomination';
 
 export default function* rootSaga() {
   yield all([
     watchGetSearchResults(),
     watchGetMovieInfo(),
     watchSignIn(),
-    watchRegister()
+    watchRegister(),
+    watchNominateMovie()
   ]);
 }
 

@@ -25,7 +25,8 @@ export const initialState: ApplicationState = {
   totalResults: 0,
   searchTerm: "",
   selectedMovie: null,
-  user: null
+  user: null,
+  nominations: []
 }
 
 const rootReducer = (state = initialState, action: ApplicationAction) => {
@@ -44,8 +45,8 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         totalResults: action.totalResults
       };
     case GET_MOVIE_INFO: 
-    case NOMINATE_MOVIE: 
     case SIGN_IN: 
+    case NOMINATE_MOVIE: 
       return {
         ...state,
         isLoading: true
@@ -59,7 +60,11 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
     case NOMINATE_MOVIE_SUCCESS:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        nominations: [
+          ...state.nominations,
+          action.movie
+        ]
       }
     case SIGN_IN_SUCCESS:
     case SET_USER:

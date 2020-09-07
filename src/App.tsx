@@ -8,6 +8,7 @@ import MovieInfo from './components/MovieInfo';
 import Register from './components/Register';
 import Welcome from './components/Welcome';
 import SignIn from './components/SignIn';
+import { Loader } from './components/common';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={SignIn} />
       <Route exact path="/welcome" component={Welcome} />
+      <Route exact path="/dog" component={SearchResult} />
     </Switch>
   );
 }

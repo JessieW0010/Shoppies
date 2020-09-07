@@ -6,7 +6,7 @@ import { getSearchResults, getMovieInfo } from '../../store/actions';
 const mapStateToProps = (store: ApplicationState) => ({
   movies: store.movies,
   isLoading: store.isLoading,
-  searchTerm: store.searchTerm,
+  searchTerm: "rambi",
   totalResults: store.totalResults,
 });
 

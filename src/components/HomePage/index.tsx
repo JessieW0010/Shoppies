@@ -4,13 +4,19 @@ import Search from '../SearchInput';
 
 function HomePage() {
   return (
-    <div className="dark-bg h-100 w-100 p-0 m-0">
-      <div className="sticky-top bg-faded justify-content-end">
-        <Avatar name="Jessie"/>
+    <div className='dark-bg h-100 w-100 p-0 m-0'>
+      <div className='sticky-top bg-faded justify-content-end'>
+        <Avatar />
       </div>
-      <div className="d-flex flex-column justify-content-center align-items-center pt-4">
-        <img src={require("../../assets/images/logo.png")} className="m-auto" width="200" height="200" alt="Shoppies Logo"/>
-        <p className="logo text-center w-100 text-white">The Shoppies</p>
+      <div className='d-flex flex-column justify-content-center align-items-center pt-4'>
+        <img
+          src={require('../../assets/images/logo.png')}
+          className='m-auto'
+          width='200'
+          height='200'
+          alt='Shoppies Logo'
+        />
+        <p className='logo text-center w-100 text-white'>The Shoppies</p>
         <Search />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { IGetSearchResults, IGetMovieInfo, INominateMovie, IRegister, ISignIn, ISetUser } from '../../types/actionTypes';
 import { GET_SEARCH_RESULTS, GET_MOVIE_INFO, NOMINATE_MOVIE, REGISTER, SIGN_IN, SET_USER } from '../constants';
-import { IRegisterPayload, IUser } from '../../types';
+import { IRegisterPayload, IUser, IMovieInfo } from '../../types';
 import { History } from 'history';
 
 export const getSearchResults = (searchTerm: string, page?: number): IGetSearchResults => ({
@@ -15,9 +15,9 @@ export const getMovieInfo = (id: string, history?: History): IGetMovieInfo => ({
   history
 });
 
-export const nominateMovie = (id: string): INominateMovie => ({
+export const nominateMovie = (movie: IMovieInfo): INominateMovie => ({
   type: NOMINATE_MOVIE,
-  id
+  movie
 });
 
 export const register = (payload: IRegisterPayload, history: History): IRegister => ({

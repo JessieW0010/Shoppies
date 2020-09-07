@@ -3,9 +3,10 @@ import MovieInfo from './Container';
 import { ApplicationState } from '../../types';
 import { getMovieInfo, nominateMovie } from '../../store/actions';
 
-const mapStateToProps = ({ selectedMovie, isLoading }: ApplicationState) => ({
+const mapStateToProps = ({ selectedMovie, isLoading, nominations }: ApplicationState) => ({
   selectedMovie,
-  isLoading
+  isLoading,
+  nominations
 });
 
 const mapDispatchToProps = {

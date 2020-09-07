@@ -33,6 +33,10 @@ export interface ISignInResponse {
   }
 }
 
+export interface INominateMovieResponse {
+  status: number;
+}
+
 export interface IMovieInfo {
   Title: string;
   Year: string;
@@ -63,6 +67,7 @@ export interface ApplicationState {
   totalResults: number;
   selectedMovie: IMovieInfo | null;
   user: IUser | null;
+  nominations: IMovieInfo[];
 }
 
 export interface IUser {
@@ -90,4 +95,8 @@ export interface IRegisterPayload {
   last_name: string;
   email: string;
   password: string;
+}
+
+export interface INominateMoviePayload {
+  imdbIDs: string[];
 }

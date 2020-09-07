@@ -40,11 +40,12 @@ export interface IGetMovieInfoError extends Action {
 
 export interface INominateMovie extends Action {
   type: 'NOMINATE_MOVIE';
-  id: string;
+  movie: IMovieInfo;
 }
 
 export interface INominateMovieSuccess extends Action {
   type: 'NOMINATE_MOVIE_SUCCESS';
+  movie: IMovieInfo;
 }
 
 export interface INominateMovieError extends Action {
