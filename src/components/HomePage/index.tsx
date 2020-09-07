@@ -1,6 +1,12 @@
 import React from 'react';
 import { Avatar } from '../common';
 import Search from '../SearchInput';
+import { connect } from 'react-redux';
+import { logout } from '../../store/actions';
+
+const mapDispatchToProps = {
+  logout
+};
 
 function HomePage() {
   return (
@@ -19,8 +25,9 @@ function HomePage() {
         <p className='logo text-center w-100 text-white'>The Shoppies</p>
         <Search />
       </div>
+      <p onClick={logout} className="logout text-white">Logout</p>
     </div>
   );
 }
 
-export default HomePage;
+export default connect(null, mapDispatchToProps)(HomePage);

@@ -72,3 +72,11 @@ h1, h2, h3, h4, h5, h6, p, small {
 .movie-title {
   font-size: 2em;
 }
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  padding-left: 1em;
+  cursor: pointer;
+  text-decoration: underline;
+}

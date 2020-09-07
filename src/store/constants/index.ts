@@ -19,3 +19,10 @@ export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 
 export const SET_USER = 'SET_USER';
+
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+export const GET_USER_MOVIES = 'GET_USER_MOVIES';
+export const GET_USER_MOVIES_SUCCESS = 'GET_USER_MOVIES_SUCCESS';
+export const GET_USER_MOVIES_ERROR = 'GET_USER_MOVIES_ERROR';

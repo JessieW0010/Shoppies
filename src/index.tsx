@@ -7,12 +7,13 @@ import store from './store'
 import { BrowserRouter } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import axios from 'axios';
-import { setUser } from './store/actions';
+import { setUser, getUserMovies } from './store/actions';
 import 'react-toastify/dist/ReactToastify.css';
 
 if (localStorage.jwtToken) {
   axios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.jwtToken;
   store.dispatch(setUser(jwtDecode(localStorage.jwtToken)));
+  store.dispatch(getUserMovies());
 }
 
 ReactDOM.render(

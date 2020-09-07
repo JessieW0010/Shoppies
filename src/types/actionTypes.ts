@@ -91,6 +91,23 @@ export interface ISetUser extends Action {
   user: IUser
 }
 
+
+export interface ILogout extends Action {
+  type: 'LOGOUT';
+}
+
+export interface IGetUserMovies extends Action {
+  type: 'GET_USER_MOVIES';
+}
+export interface IGetUserMoviesSuccess extends Action {
+  type: 'GET_USER_MOVIES_SUCCESS';
+  movies: IMovieInfo[];
+}
+
+export interface IGetUserMoviesError extends Action {
+  type: 'GET_USER_MOVIES_ERROR';
+}
+
 export type ApplicationAction =
   | IGetSearchResults
   | IGetSearchResultsSuccess
@@ -107,4 +124,8 @@ export type ApplicationAction =
   | ISignIn
   | ISignInSuccess
   | ISignInError
-  | ISetUser;
+  | IGetUserMovies
+  | IGetUserMoviesSuccess
+  | IGetUserMoviesError
+  | ISetUser
+  | ILogout;
