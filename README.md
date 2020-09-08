@@ -1,5 +1,5 @@
 ## TweetWorld 
-[hosted API](http://plan-it-api-1.herokuapp.com)https://the-shoppies-award.herokuapp.com/welcome
+[Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
 An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
 
@@ -13,7 +13,7 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 
 To clone this repository you will need `node` and `npm` installed globally on your machine.  
 
-The app is fetching from a hosted API, however you can change this to run on your localhost by cloning the [API](https://frozen-dusk-95287.herokuapp.com) and replacing all instances of the fetched URL to your localhost.
+The app is fetching from a hosted API, however you can change this to run on your localhost by cloning the [API](https://github.com/JessieW0010/shoppies-api) and replacing the API base URL in `/src/api`.
 
 Installation:
 
