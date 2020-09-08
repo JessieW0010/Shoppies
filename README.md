@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Shoppies 
+[Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
-## Available Scripts
+An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
 
-In the project directory, you can run:
+## Project Screen Shot(s)
 
-### `yarn start`
+[ PRETEND SCREEN SHOT IS HERE ]
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[ PRETEND OTHER SCREEN SHOT IS HERE ]
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation and Setup Instructions
 
-### `yarn test`
+To clone this repository you will need `node` and `npm` installed globally on your machine.  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app is fetching from a hosted API, however you can change this to run on your localhost by cloning the [API](https://github.com/JessieW0010/shoppies-api) and replacing the API base URL in `/src/api`.
 
-### `yarn build`
+Installation:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm install`   
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To Start Dev Server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm run dev`  
 
-### `yarn eject`
+To Visit App:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`localhost:3000`  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Reflection
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This was a 4-day project built for Shopify's 2021 Winter Web Development Internship application. The applicaton must allow users to search movies via the hosted [API](https://frozen-dusk-95287.herokuapp.com) (powered by [OMDB API](http://www.omdbapi.com)) and add/ remove 5 movies from their list.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I started this process by using the `create-react-app` boilerplate, then adding `typescript`, `react-router`, `redux`, and `redux-saga`.
 
-## Learn More
+One of the main challenges I had were project time constraints, originally I had no plans of incorporating third party libraries for building components and styling but these plans were quickly tossed out on day 2. In the end, I chose to add `bootstrap-4` for easier styling, `font-awesome` for icons, `react-toastify` for success messages, and `react-responsive` to easily check device size for responsiveness. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+In the next iteration I plan on adding `webpack.config.js` file to more fully understand the build process.
