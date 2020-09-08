@@ -1,5 +1,5 @@
 ## TweetWorld 
-https://the-shoppies-award.herokuapp.com/welcome
+[hosted API](http://plan-it-api-1.herokuapp.com)https://the-shoppies-award.herokuapp.com/welcome
 
 An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
 
@@ -13,7 +13,7 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 
 To clone this repository you will need `node` and `npm` installed globally on your machine.  
 
-The app is fetching from a hosted API, however you can change this to run on your localhost by cloning the API and replacing all instances of the fetched URL to your localhost.
+The app is fetching from a hosted API, however you can change this to run on your localhost by cloning the [API](https://frozen-dusk-95287.herokuapp.com) and replacing all instances of the fetched URL to your localhost.
 
 Installation:
 
@@ -29,7 +29,7 @@ To Visit App:
 
 ## Reflection
 
-This was a 4-day project built for Shopify's 2021 Winter Web Development Internship application. The applicaton must allow users to search movies via the hosted API (powered by OMDB API) and add/ remove 5 movies from their list.
+This was a 4-day project built for Shopify's 2021 Winter Web Development Internship application. The applicaton must allow users to search movies via the hosted [API](https://frozen-dusk-95287.herokuapp.com) (powered by [OMDB API](http://www.omdbapi.com)) and add/ remove 5 movies from their list.
 
 I started this process by using the `create-react-app` boilerplate, then adding `typescript`, `react-router`, `redux`, and `redux-saga`.
 
