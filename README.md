@@ -1,4 +1,4 @@
-## TweetWorld 
+## The Shoppies 
 [Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
 An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
