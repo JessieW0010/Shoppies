@@ -7,8 +7,7 @@ import {
   INominateMoviePayload,
   IUnNominateMoviePayload
 } from '../types';
-// const API_URL = "https://frozen-dusk-95287.herokuapp.com";
-const API_URL = "http://localhost:8000";
+const API_URL = "https://frozen-dusk-95287.herokuapp.com";
 
 export const searchByTitle = (payload: ISearchByTitlePayload) => {
   return Axios.post(`${API_URL}/search/title`, payload);

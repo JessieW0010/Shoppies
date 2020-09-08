@@ -39,7 +39,7 @@ function MovieInfo({
   const [display, toggleDisplay] = useState<boolean>(false);
 
   const handleNomination = () => {
-    if (selectedMovie) {
+    if (selectedMovie && (nominations.length < 5)) {
       nominateMovie(selectedMovie);
     }
   };
@@ -131,18 +131,19 @@ function MovieInfo({
   };
 
   const renderNominateBtn = () => {
-    let isDisabled = false;
+    let nominated = false;
     nominations.forEach((movie: IMovieInfo) => {
-      if (movie.imdbID === selectedMovie?.imdbID) { isDisabled = true }
+      if (movie.imdbID === selectedMovie?.imdbID) { nominated = true }
     })
     return (
       <div className='d-flex flex-column align-items-center w-100'>
         <button
-          onClick={isDisabled ? removeNomination : handleNomination}
+          onClick={nominated ? removeNomination : handleNomination}
           type='button'
           className='btn btn-primary btn-sm w-75 mt-3'
+          disabled={nominations.length === 5 && !nominated}
         >
-          { isDisabled ? "Remove Nomination" : "Nominate"}
+          { nominated ? "Remove Nomination" : "Nominate"}
         </button>
       </div>
     )

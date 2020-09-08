@@ -3,11 +3,12 @@ import { GET_MOVIE_INFO, GET_MOVIE_INFO_SUCCESS, GET_MOVIE_INFO_ERROR } from '..
 import { searchById } from '../../api';
 import { ISearchMovieInfoResponse } from '../../types';
 import { IGetMovieInfo } from '../../types/actionTypes';
-
+import { toast } from 'react-toastify';
 export function* handleGetMovieInfo({ 
   id,
   history
 }: IGetMovieInfo) {
+  const notify = () => toast.error(`Oops! Something went wrong.`);
   try {
     const response: ISearchMovieInfoResponse = yield call(searchById, { id });
     if (response.status === 200) {
@@ -20,6 +21,7 @@ export function* handleGetMovieInfo({
       }
     }
   } catch (err) {
+    notify()
     yield put({
       type: GET_MOVIE_INFO_ERROR
     })
