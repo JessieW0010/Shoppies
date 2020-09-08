@@ -5,11 +5,11 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 
 ## Project Screen Shot(s)
 
-![Alt text](src/assets/screenshots/HomeScreen.png "HomeScreen Mobile")
+![Alt text](src/assets/screenshots/HomeScreen.png "HomeScreen Mobile"| width=100)
 
-![Alt text](src/assets/screenshots/MovieInfoScreenMobile.png "MovieInfoScreen Mobile")
+![Alt text](src/assets/screenshots/MovieInfoScreenMobile.png "MovieInfoScreen Mobile"| width=100)
 
-![Alt text](src/assets/screenshots/SearchResultsScreen.png "SearchResultsScreen Mobile")
+![Alt text](src/assets/screenshots/SearchResultsScreen.png "SearchResultsScreen Mobile"| width=100)
 
 ## Installation and Setup Instructions
 
