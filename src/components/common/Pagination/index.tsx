@@ -16,7 +16,7 @@ function Pagination({ totalItems, currentIndex, itemLimit, onPageClicked }: IPag
   const renderPageBlocks = () => {
     let pages = [];
     for (let i = index; i <= numPages; i ++) {
-      pages.push(<li key={i} onClick={() => onPageClicked(i)} className={`page-item ${i === index && "active"}`}><p className="page-link">{i}</p></li>);
+      pages.push(<li key={i} onClick={() => onPageClicked(i)} className={`page-item ${i === index && "active"}`}><p className="page-link text-white">{i}</p></li>);
     }
     return pages;
   }
@@ -31,9 +31,9 @@ function Pagination({ totalItems, currentIndex, itemLimit, onPageClicked }: IPag
 
   return (
     <ul className="pagination d-flex flex-row justify-content-center">
-      <li onClick={goToPrevious} className={`page-item ${index === 1 ? "disabled" : ""}`}><p className="page-link">Previous</p></li>
+      <li onClick={goToPrevious} className={`page-item ${index === 1 ? "disabled" : ""}`}><p className="page-link text-white">Previous</p></li>
       {renderPageBlocks()}
-      <li onClick={goToNext} className={`page-item ${(index + pageBlockLimit) > numPages ? "disabled" : ""}`}><p className="page-link">Next</p></li>
+      <li onClick={goToNext} className={`page-item ${(index + pageBlockLimit) > numPages ? "disabled" : ""}`}><p className="page-link text-white">Next</p></li>
     </ul>
   );
 }

@@ -1,16 +1,14 @@
 import { connect } from 'react-redux';
 import Container from './Container';
-import {
-  getSearchResults
-} from '../../store/actions';
-import { ApplicationState } from '../../types';
+import { getSearchResults } from '../../../store/actions';
+import { ApplicationState } from '../../../types';
 
 const mapStateToProps = (state: ApplicationState) => ({
-  movies: state.movies
+  movies: state.movies,
 });
 
 const mapDispatchToProps = {
-  getSearchResults
+  getSearchResults,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);

@@ -4,11 +4,8 @@ import {
 } from '../../store/actions';
 import { ApplicationState } from '../../types';
 
-const mapStateToProps = (state: ApplicationState) => ({
-  movies: state.movies
+const mapStateToProps = ({ movies }: ApplicationState) => ({
+  movies
 });
 
-const mapDispatchToProps = {
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(mapStateToProps, null)(Container);

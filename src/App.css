@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
-body, #root {
+body,
+#root {
   margin: 0;
   height: 100vh;
-  background-color: #f1f2f3;
+  background-color: #131313;
+}
+
+h1, h2, h3, h4, h5, h6, p, small {
+  color: #fff;
 }
 
 .app {
@@ -22,15 +27,78 @@ body, #root {
   cursor: pointer;
 }
 
-.navbar {
-  background-color: #f1f2f3;
-}
-
 .overlay-dark {
   position: absolute;
-  background-color: rgba(0,0,0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .movieInfo-container {
   background-color: #000;
+}
+
+.dark-bg {
+  background-color: #131313;
+}
+
+.list-group-item {
+  background-color: #1f1f1f !important;
+}
+
+.btn-primary {
+  background-color: #ffbc0e !important;
+  color: black !important;
+  border-color: #ffbc0e !important;
+}
+
+.page-link.active .page-link {
+  background-color: #4f6073 !important;
+}
+
+.page-link:hover {
+  cursor: pointer;
+}
+
+.page-link, .page-item.disabled .page-link {
+  background-color: #202020 !important;
+  border-color: #202020 !important;
+}
+
+.avatar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.movie-title {
+  font-size: 2em;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  padding-left: 1em;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form-error {
+  font-size: 70%;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+.back-btn {
+  cursor: pointer;
 }

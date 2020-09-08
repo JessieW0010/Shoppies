@@ -1,23 +1,26 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
-import { IMovie } from '../../types';
-import { Container } from 'react-bootstrap';
-import SearchInput from '../SearchInput';
-import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
+import React from 'react';
+import SearchInput from '../common/SearchInput';
+import { withRouter } from 'react-router-dom';
+import { Avatar } from '../common';
 
-export interface INavBarPropTypes extends RouteComponentProps {
-}
-
-function NavBar({
-  history
-}: INavBarPropTypes) {
+function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg sticky-top bg-faded">
-      <a className="navbar-brand" href="/">
-        <img src={require("../../assets/images/logo.png")} width="30" height="30" className="d-inline-block align-top" alt="Shoppies Logo"/>
+    <nav className='navbar navbar-expand-lg sticky-top dark-bg p-3'>
+      <a className='navbar-brand' href='/'>
+        <img
+          src={require('../../assets/images/logo.png')}
+          width='30'
+          height='30'
+          className='d-inline-block align-top'
+          alt='Shoppies Logo'
+        />
       </a>
-      <SearchInput/>
+      <SearchInput />
+      <div>
+        <Avatar />
+      </div>
     </nav>
-  )
+  );
 }
 
 export default withRouter(NavBar);

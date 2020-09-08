@@ -22,6 +22,20 @@ export interface ISearchMovieInfoResponse {
   };
 }
 
+export interface ISignInResponse {
+  status: number;
+  data: {
+    token: string;
+  }
+}
+
+export interface INominateMovieResponse {
+  status: number;
+  data: {
+    nominated: { imdbID: string }[]
+  }
+}
+
 export interface IMovieInfo {
   Title: string;
   Year: string;
@@ -51,6 +65,22 @@ export interface ApplicationState {
   searchTerm: string;
   totalResults: number;
   selectedMovie: IMovieInfo | null;
+  user: IUser | null;
+  nominations: IMovieInfo[];
+  error: IErrorState;
+}
+
+export interface IErrorState {
+  register: number | null;
+  login: number | null;
+}
+
+export interface IUser {
+  email: string;
+  first_name: string;
+  last_name: string;
+  id: number;
+  iat: number;
 }
 
 export interface ISearchByTitlePayload {
@@ -60,4 +90,20 @@ export interface ISearchByTitlePayload {
 
 export interface ISearchByIdPayload {
   id: string;
+}
+
+export interface ISignInPayload {
+  email: string;
+  password: string;
+}
+
+export interface IRegisterPayload {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+}
+
+export interface INominateMoviePayload {
+  imdbIDs: string[];
 }
