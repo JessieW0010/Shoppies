@@ -24,15 +24,15 @@ function Avatar({ user, nominations, history, getMovieInfo }: IAvatarProps) {
           <img src={require("../../../assets/images/avatar.png")} width="35" height="35" className="d-inline-block align-top rounded" alt="Shoppies Logo"/>
         </div>
         <div className="dropdown-menu" style={{ right: 0, left: '-200px'}} aria-labelledby="dropdownMenuButton">
-          <p className="text-dark">Nominations</p>
+          <p className="text-dark text-center font-weight-bold">Nominations</p>
             { nominations.length > 0 ? nominations.map((movie: IMovieInfo, index: number) => (
-                <div onClick={() => handleOnMovieClicked(movie.imdbID)} key={index} className="dropdown-item d-flex justify-content-around align-items-center">
-                  <div className="d-flex flex-column align-items-stretch">
-                    <h6 className="m-0 text-dark">{movie.Title}</h6>
+                <div onClick={() => handleOnMovieClicked(movie.imdbID)} key={index} className="dropdown-item d-flex">
+                  <div style={{ flex: 1, maxWidth: "80%" }} className="d-flex flex-column align-items-stretch">
+                    <p className="dropdown-movie-title m-0 text-dark text-truncate">{movie.Title}</p>
                     <small className="m-0 text-dark">{movie.Year}</small>
                   </div>
                   <div className="image-parent pl-2">
-                    <img src={(movie.Poster === "N/A") ? require("../../../assets/images/broken_img.jpg") : movie.Poster} className="img-fluid" alt={`${movie.Title} Movie Poster`}/>
+                    <img width="30px" src={(movie.Poster === "N/A") ? require("../../../assets/images/broken_img.jpg") : movie.Poster} className="img-fluid" alt={`${movie.Title} Movie Poster`}/>
                   </div>
                 </div>
             )) : (<div className="dropdown-item">No movies nominated.</div>)}

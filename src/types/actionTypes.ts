@@ -52,6 +52,22 @@ export interface INominateMovieError extends Action {
   type: 'NOMINATE_MOVIE_ERROR';
 }
 
+// *** UNNominate Movie ***
+
+export interface IUnNominateMovie extends Action {
+  type: 'UN_NOMINATE_MOVIE';
+  movie: IMovieInfo;
+}
+
+export interface IUnNominateMovieSuccess extends Action {
+  type: 'UN_NOMINATE_MOVIE_SUCCESS';
+  nominations: IMovieInfo[];
+}
+
+export interface IUnNominateMovieError extends Action {
+  type: 'UN_NOMINATE_MOVIE_ERROR';
+}
+
 // *** Register Acct ***
 
 export interface IRegister extends Action {
@@ -129,6 +145,9 @@ export type ApplicationAction =
   | INominateMovie
   | INominateMovieSuccess
   | INominateMovieError
+  | IUnNominateMovie
+  | IUnNominateMovieSuccess
+  | IUnNominateMovieError
   | IRegister
   | IRegisterSuccess
   | IRegisterError

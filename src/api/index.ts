@@ -4,9 +4,11 @@ import {
   ISearchByIdPayload,
   ISignInPayload,
   IRegisterPayload,
-  INominateMoviePayload
+  INominateMoviePayload,
+  IUnNominateMoviePayload
 } from '../types';
-const API_URL = "https://frozen-dusk-95287.herokuapp.com";
+// const API_URL = "https://frozen-dusk-95287.herokuapp.com";
+const API_URL = "http://localhost:8000";
 
 export const searchByTitle = (payload: ISearchByTitlePayload) => {
   return Axios.post(`${API_URL}/search/title`, payload);
@@ -26,6 +28,10 @@ export const register = (payload: IRegisterPayload) => {
 
 export const nominateMovie = (payload: INominateMoviePayload) => {
   return Axios.post(`${API_URL}/nominate`, payload);
+};
+
+export const unNominateMovie = (payload: IUnNominateMoviePayload) => {
+  return Axios.post(`${API_URL}/nominate/undo`, payload);
 };
 
 export const getNominatedMovies = () => {

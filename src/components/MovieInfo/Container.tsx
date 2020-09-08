@@ -9,13 +9,14 @@ import { IMovieInfo } from '../../types';
 import { useMediaQuery } from 'react-responsive';
 import { History } from 'history';
 import addDefaultSrc from '../../helpers/addDefaultSrc';
-import { INominateMovie } from '../../types/actionTypes';
+import { INominateMovie, IUnNominateMovie } from '../../types/actionTypes';
 import { ToastContainer } from 'react-toastify';
 interface IMovieInfoProps extends RouteComponentProps {
   selectedMovie: IMovieInfo | null;
   nominateMovie: (movie: IMovieInfo) => INominateMovie;
   getMovieInfo: (id: string, history?: History) => void;
   nominations: IMovieInfo[];
+  unNominateMovie: (movie: IMovieInfo) => IUnNominateMovie;
 }
 
 function MovieInfo({
@@ -23,7 +24,8 @@ function MovieInfo({
   history,
   nominateMovie,
   getMovieInfo,
-  nominations
+  nominations,
+  unNominateMovie
 }: IMovieInfoProps) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 725px)' });
 
@@ -41,6 +43,12 @@ function MovieInfo({
       nominateMovie(selectedMovie);
     }
   };
+
+  const removeNomination = () => {
+    if (selectedMovie) {
+      unNominateMovie(selectedMovie);
+    }
+  }
 
   const renderMoreInfo = (selectedMovie: IMovieInfo) => {
     const {
@@ -130,12 +138,11 @@ function MovieInfo({
     return (
       <div className='d-flex flex-column align-items-center w-100'>
         <button
-          onClick={handleNomination}
+          onClick={isDisabled ? removeNomination : handleNomination}
           type='button'
           className='btn btn-primary btn-sm w-75 mt-3'
-          disabled={isDisabled}
         >
-          { isDisabled ? "Nominated" : "Nominate"}
+          { isDisabled ? "Remove Nomination" : "Nominate"}
         </button>
       </div>
     )

@@ -4,6 +4,7 @@ import watchGetMovieInfo from './handleGetMovieInfo';
 import watchSignIn from './handleSignIn';
 import watchRegister from './handleRegister';
 import watchNominateMovie from './handleNomination';
+import watchUnNominateMovie from './handleUnNominateMovie';
 import watchGetUserMovies from './handleGetUserMovies';
 import watchLogout from './handleLogout';
 
@@ -15,7 +16,8 @@ export default function* rootSaga() {
     watchRegister(),
     watchNominateMovie(),
     watchGetUserMovies(),
-    watchLogout()
+    watchLogout(),
+    watchUnNominateMovie()
   ]);
 }
 

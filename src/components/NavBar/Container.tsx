@@ -16,7 +16,7 @@ function NavBar() {
         />
       </a>
       <SearchInput />
-      <div>
+      <div className="w-25">
         <Avatar />
       </div>
     </nav>

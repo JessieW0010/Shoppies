@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MovieInfo from './Container';
 import { ApplicationState } from '../../types';
-import { getMovieInfo, nominateMovie } from '../../store/actions';
+import { getMovieInfo, nominateMovie, unNominateMovie } from '../../store/actions';
 
 const mapStateToProps = ({ selectedMovie, isLoading, nominations }: ApplicationState) => ({
   selectedMovie,
@@ -11,7 +11,8 @@ const mapStateToProps = ({ selectedMovie, isLoading, nominations }: ApplicationS
 
 const mapDispatchToProps = {
   getMovieInfo,
-  nominateMovie
+  nominateMovie,
+  unNominateMovie
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

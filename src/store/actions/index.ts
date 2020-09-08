@@ -1,5 +1,5 @@
-import { IGetSearchResults, IGetMovieInfo, INominateMovie, IRegister, ISignIn, ISetUser, IGetUserMovies, ILogout } from '../../types/actionTypes';
-import { GET_SEARCH_RESULTS, GET_MOVIE_INFO, NOMINATE_MOVIE, REGISTER, SIGN_IN, SET_USER, GET_USER_MOVIES, LOGOUT } from '../constants';
+import { IGetSearchResults, IGetMovieInfo, INominateMovie, IUnNominateMovie, IRegister, ISignIn, ISetUser, IGetUserMovies, ILogout } from '../../types/actionTypes';
+import { GET_SEARCH_RESULTS, GET_MOVIE_INFO, UN_NOMINATE_MOVIE, NOMINATE_MOVIE, REGISTER, SIGN_IN, SET_USER, GET_USER_MOVIES, LOGOUT } from '../constants';
 import { IRegisterPayload, IUser, IMovieInfo } from '../../types';
 import { History } from 'history';
 
@@ -17,6 +17,11 @@ export const getMovieInfo = (id: string, history?: History): IGetMovieInfo => ({
 
 export const nominateMovie = (movie: IMovieInfo): INominateMovie => ({
   type: NOMINATE_MOVIE,
+  movie
+});
+
+export const unNominateMovie = (movie: IMovieInfo): IUnNominateMovie => ({
+  type: UN_NOMINATE_MOVIE,
   movie
 });
 

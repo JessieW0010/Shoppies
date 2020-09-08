@@ -36,6 +36,11 @@ export interface INominateMovieResponse {
   }
 }
 
+export interface IUnNominateMovieResponse {
+  status: number;
+  msg: string;
+}
+
 export interface IMovieInfo {
   Title: string;
   Year: string;
@@ -106,4 +111,8 @@ export interface IRegisterPayload {
 
 export interface INominateMoviePayload {
   imdbIDs: string[];
+}
+
+export interface IUnNominateMoviePayload {
+  imdbID: string;
 }

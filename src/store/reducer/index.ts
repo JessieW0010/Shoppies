@@ -8,6 +8,9 @@ import {
   NOMINATE_MOVIE,
   NOMINATE_MOVIE_SUCCESS,
   NOMINATE_MOVIE_ERROR,
+  UN_NOMINATE_MOVIE,
+  UN_NOMINATE_MOVIE_SUCCESS,
+  UN_NOMINATE_MOVIE_ERROR,
   SIGN_IN,
   SIGN_IN_SUCCESS,
   SIGN_IN_ERROR,
@@ -63,6 +66,7 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
     case REGISTER:
     case LOGOUT:
     case GET_USER_MOVIES:
+    case UN_NOMINATE_MOVIE:
       return {
         ...state,
         isLoading: true
@@ -109,10 +113,17 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
           ...action.payload
         }
       }
+    case UN_NOMINATE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        nominations: action.nominations
+      }
     case LOGOUT_SUCCESS:
       return {
         ...initialState,
-        isLoading: false
+        isLoading: false,
+        error: initialErrorState
       }
     default:
       return state;
