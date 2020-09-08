@@ -67,7 +67,9 @@ export interface IRegisterSuccess extends Action {
 
 export interface IRegisterError extends Action {
   type: 'REGISTER_ERROR';
-  status: number;
+  payload: {
+    register: number;
+  };
 }
 
 // *** SignIn ***
@@ -86,6 +88,9 @@ export interface ISignInSuccess extends Action {
 
 export interface ISignInError extends Action {
   type: 'SIGN_IN_ERROR';
+  payload: {
+    register: number;
+  };
 }
 
 export interface ISetUser extends Action {

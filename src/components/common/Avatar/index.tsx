@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ApplicationState, IUser, IMovieInfo } from '../../../types';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { getMovieInfo } from '../../../store/actions';
+import { History } from 'history';
 interface IAvatarProps extends RouteComponentProps {
   user: IUser | null;
   nominations: IMovieInfo[];

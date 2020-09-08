@@ -25,7 +25,9 @@ export function* handleRegister({
   } catch (err) {
     yield put({
       type: REGISTER_ERROR,
-      status: 409
+      payload: {
+        register: err.response.status
+      }
     })
   }
 }

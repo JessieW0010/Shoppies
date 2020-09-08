@@ -100,12 +100,13 @@ const rootReducer = (state = initialState, action: ApplicationAction) => {
         isLoading: false
       }
     case REGISTER_ERROR:
+    case SIGN_IN_ERROR:
       return {
         ...state,
         isLoading: false,
         error: {
           ...state.error,
-          register: 409
+          ...action.payload
         }
       }
     case LOGOUT_SUCCESS:

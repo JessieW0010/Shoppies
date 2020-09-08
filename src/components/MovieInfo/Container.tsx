@@ -15,7 +15,7 @@ interface IMovieInfoProps extends RouteComponentProps {
   selectedMovie: IMovieInfo | null;
   nominateMovie: (movie: IMovieInfo) => INominateMovie;
   getMovieInfo: (id: string, history?: History) => void;
-  nominstaions: IMovieInfo[];
+  nominations: IMovieInfo[];
 }
 
 function MovieInfo({
@@ -53,7 +53,7 @@ function MovieInfo({
       Awards,
     } = selectedMovie;
     return (
-      <div className='mt-5 w-100'>
+      <div className='mt-5 w-100 mb-5'>
         <div className='row'>
           <small className='text-muted col-3'>Directed by: </small>
           <small className='col-9'>{Director}</small>
@@ -135,7 +135,7 @@ function MovieInfo({
           className='btn btn-primary btn-sm w-75 mt-3'
           disabled={isDisabled}
         >
-          Nominate
+          { isDisabled ? "Nominated" : "Nominate"}
         </button>
       </div>
     )

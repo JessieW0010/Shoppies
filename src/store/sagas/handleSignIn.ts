@@ -25,7 +25,10 @@ export function* handleSignIn({
     }
   } catch (err) {
     yield put({
-      type: SIGN_IN_ERROR
+      type: SIGN_IN_ERROR,
+      payload: {
+        login: err.response.status
+      }
     })
   }
 }
