@@ -15,7 +15,7 @@ interface IMovieInfoProps extends RouteComponentProps {
   selectedMovie: IMovieInfo | null;
   nominateMovie: (movie: IMovieInfo) => INominateMovie;
   getMovieInfo: (id: string, history?: History) => void;
-  nominations: IMovieInfo[];
+  nominstaions: IMovieInfo[];
 }
 
 function MovieInfo({
@@ -23,7 +23,7 @@ function MovieInfo({
   history,
   nominateMovie,
   getMovieInfo,
-  nominations,
+  nominations
 }: IMovieInfoProps) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 725px)' });
 
@@ -35,12 +35,10 @@ function MovieInfo({
   });
 
   const [display, toggleDisplay] = useState<boolean>(false);
-  const [disableNominate, toggleDisableNominate] = useState<boolean>(false);
 
   const handleNomination = () => {
     if (selectedMovie) {
       nominateMovie(selectedMovie);
-      toggleDisableNominate(true);
     }
   };
 
@@ -124,18 +122,24 @@ function MovieInfo({
     );
   };
 
-  const nominationBtn = (
-    <div className='d-flex flex-column align-items-center w-100'>
-      <button
-        onClick={handleNomination}
-        type='button'
-        className='btn btn-primary btn-sm w-75 mt-3'
-        disabled={disableNominate}
-      >
-        Nominate
-      </button>
-    </div>
-  );
+  const renderNominateBtn = () => {
+    let isDisabled = false;
+    nominations.forEach((movie: IMovieInfo) => {
+      if (movie.imdbID === selectedMovie?.imdbID) { isDisabled = true }
+    })
+    return (
+      <div className='d-flex flex-column align-items-center w-100'>
+        <button
+          onClick={handleNomination}
+          type='button'
+          className='btn btn-primary btn-sm w-75 mt-3'
+          disabled={isDisabled}
+        >
+          Nominate
+        </button>
+      </div>
+    )
+  };
 
   if (selectedMovie) {
     const {
@@ -157,7 +161,7 @@ function MovieInfo({
             className='w-100 img-fluid'
             alt={`${Title} Movie Poster`}
           />
-          <div className='card-img-overlay text-white overlay-dark overflow-auto'>
+          <div className='back-btn card-img-overlay text-white overlay-dark overflow-auto'>
             <div className='pt-2 pb-5'>
               <FontAwesomeIcon
                 onClick={() => history.goBack()}
@@ -182,7 +186,7 @@ function MovieInfo({
 
             {renderMoreInfo(selectedMovie)}
 
-            {nominationBtn}
+            {renderNominateBtn()}
           </div>
         </Container>
       );
@@ -190,7 +194,7 @@ function MovieInfo({
       return (
         <div className='d-flex flex-column h-100 p-0  overflow-auto'>
           <div className='text-white pt-4 pb-2 pl-3 pr-2'>
-            <div className='d-flex align-items-center'>
+            <div className='back-btn d-flex align-items-center'>
               <FontAwesomeIcon
                 onClick={() => history.goBack()}
                 size='2x'
@@ -216,7 +220,7 @@ function MovieInfo({
                 alt={`${Title} Movie Poster`}
               />
               {renderRatings(imdbRating, imdbVotes)}
-              {nominationBtn}
+              {renderNominateBtn()}
             </div>
             <div className='col-7 d-flex flex-column align-items-center'>
               {/* *** Plot *** */}

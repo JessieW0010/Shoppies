@@ -1,28 +1,28 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import Content from './Content';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { IGetSearchResults } from '../../types/actionTypes';
+import { IGetSearchResults } from '../../../types/actionTypes';
 
 export interface ISearchInputContainerPropTypes extends RouteComponentProps {
-  getSearchResults: (userInput: string) => IGetSearchResults
+  getSearchResults: (userInput: string) => IGetSearchResults;
 }
 
-function Container({ 
+function Container({
   getSearchResults,
-  history
+  history,
 }: ISearchInputContainerPropTypes) {
-  const [userInput, setUserInput] = useState<string>("");
+  const [userInput, setUserInput] = useState<string>('');
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setUserInput(event.target.value);
-  }
+  };
 
   const handleSearch = (): void => {
     if (userInput) {
       getSearchResults(userInput);
-      history.push(`/search/${userInput}`)
+      history.push(`/search/${userInput}`);
     }
-  }
+  };
 
   const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
@@ -31,7 +31,12 @@ function Container({
   };
 
   return (
-    <Content handleSearch={handleSearch} handleOnChange={handleOnChange} handleOnKeyDown={handleOnKeyDown} userInput={userInput}/>
+    <Content
+      handleSearch={handleSearch}
+      handleOnChange={handleOnChange}
+      handleOnKeyDown={handleOnKeyDown}
+      userInput={userInput}
+    />
   );
 }
 

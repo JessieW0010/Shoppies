@@ -1,11 +1,11 @@
 import React from 'react';
 import { Avatar } from '../common';
-import Search from '../SearchInput';
+import Search from '../common/SearchInput';
 import { connect } from 'react-redux';
 import { logout } from '../../store/actions';
 
 const mapDispatchToProps = {
-  logout
+  logout,
 };
 
 interface IHomePageProps {
@@ -29,7 +29,9 @@ function HomePage({ logout }: IHomePageProps) {
         <p className='logo text-center w-100 text-white'>The Shoppies</p>
         <Search />
       </div>
-      <p onClick={logout} className="logout text-white">Logout</p>
+      <p onClick={logout} className='logout text-white'>
+        Logout
+      </p>
     </div>
   );
 }

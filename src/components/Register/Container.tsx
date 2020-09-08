@@ -27,7 +27,9 @@ function Register({
     const { first_name, last_name, email, password, confirm_password } = state;
     if (first_name && last_name && email && password && confirm_password) {
       if (password !== confirm_password) {
-        setError("Passwords don't match.")
+        setError("Passwords don't match.");
+      } else if (password.length < 8) {
+        setError("Password must be at least 8 characters long.");
       } else {
         register(state, history);
       }
