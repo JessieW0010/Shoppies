@@ -6,6 +6,7 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 ## Project Screen Shot(s)
 
 ![Home screen mobile display](src/assets/screenshots/HomeScreen.png =250x "HomeScreen Mobile")
+<img src="src/assets/screenshots/HomeScreen.png" alt="drawing" width="200"/>
 
 ![Alt text](src/assets/screenshots/MovieInfoScreenMobile.png "MovieInfoScreen Mobile"){:height="50%" width="50%"}
 
