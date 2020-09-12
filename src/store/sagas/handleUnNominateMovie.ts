@@ -7,19 +7,19 @@ import { toast } from 'react-toastify';
 export function* handleUnNominateMovie({ 
   movie
 }: IUnNominateMovie) {
+  const notify = () => toast.error(`Oops! Something went wrong.`);
   try {
     const nominationsPrev = yield select((state: ApplicationState) => state.nominations);
-    const notify = () => toast(`Successfully removed nomination for ${movie.Title} (${movie.Year})`);
     const response: IUnNominateMovieResponse = yield call(unNominateMovie, { imdbID: movie.imdbID });
     if (response.status === 200) {
       const nominations = nominationsPrev.filter((nom: IMovieInfo) => movie.imdbID !== nom.imdbID);
-      notify();
       yield put({
         type: UN_NOMINATE_MOVIE_SUCCESS,
         nominations
       })
     }
   } catch (err) {
+    notify();
     yield put({
       type: UN_NOMINATE_MOVIE_ERROR
     })

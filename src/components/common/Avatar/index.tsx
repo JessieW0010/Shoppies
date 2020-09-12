@@ -22,6 +22,7 @@ function Avatar({ user, nominations, history, getMovieInfo }: IAvatarProps) {
       <div className="dropdown">
         <div className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
           <img src={require("../../../assets/images/avatar.png")} width="35" height="35" className="d-inline-block align-top rounded" alt="Shoppies Logo"/>
+          {nominations.length > 0 && <span className="num-nominations text-white">{nominations.length}</span>}
         </div>
         <div className="dropdown-menu" style={{ right: 0, left: '-200px'}} aria-labelledby="dropdownMenuButton">
           <p className="text-dark text-center font-weight-bold">Nominations</p>
