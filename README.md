@@ -13,11 +13,9 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 </p>
 
 #### Desktop View
-<p float="left">
-  <img src="src/assets/screenshots/HomeDesktop.png" alt="Home Screen Desktop" width="500"/>
-  <img src="src/assets/screenshots/SearchResultsDesktop.png" alt="Search Results Screen Desktop" width="500"/>
-  <img src="src/assets/screenshots/MovieInfoDesktop.png" alt="Movie Info Screen Desktop" width="500"/>
-</p>
+<img src="src/assets/screenshots/HomeDesktop.png" alt="Home Screen Desktop" width="450"/>
+<img src="src/assets/screenshots/SearchResultsDesktop.png" alt="Search Results Screen Desktop" width="450"/>
+<img src="src/assets/screenshots/MovieInfoDesktop.png" alt="Movie Info Screen Desktop" width="450"/>
 
 ## Installation and Setup Instructions
 
