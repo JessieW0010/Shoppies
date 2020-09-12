@@ -35,7 +35,7 @@ A pull request has been made for features I'll be adding after the application i
 
 | Description             |  Screenshot |
 :-------------------------:|:-------------------------:
-* Added   |  <img src="src/assets/screenshots/NumNominations.png" alt="Num nominations display" width="100"/>
+Added number of nomination display to avatar component  |  <img src="src/assets/screenshots/NumNominations.png" alt="Num nominations display" width="100"/>
 
 
 ## Reflection
