@@ -5,11 +5,11 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 
 ## Project Screen Shot(s)
 
-![Alt text](src/assets/screenshots/HomeScreen.png "HomeScreen Mobile"){:height="50%" width="50%"}
-
-![Alt text](src/assets/screenshots/MovieInfoScreenMobile.png "MovieInfoScreen Mobile"){:height="50%" width="50%"}
-
-![Alt text](src/assets/screenshots/SearchResultsScreen.png "SearchResultsScreen Mobile"){:height="50%" width="50%"}
+<p float="left">
+  <img src="src/assets/screenshots/HomeScreen.png" alt="Home Screen Mobile" width="200" height="300"/>
+  <img src="src/assets/screenshots/MovieInfoScreenMobile.png" alt="Movie Info Screen Mobile" width="200" height="300"/>
+  <img src="src/assets/screenshots/SearchResultsScreen.png" alt="Search Results Screen Mobile" width="200" height="300"/>
+</p>
 
 ## Installation and Setup Instructions
 
@@ -29,12 +29,19 @@ To Visit App:
 
 `localhost:3000`  
 
+## Post application additional features
+
+A pull request has been made for features I'll be adding after the application is reviewed. You can see these additions in the screenshots below!
+
+| Description             |  Screenshot |
+:-------------------------:|:-------------------------:
+* Added   |  <img src="src/assets/screenshots/NumNominations.png" alt="Num nominations display" width="100"/>
+
+
 ## Reflection
 
 This was a 4-day project built for Shopify's 2021 Winter Web Development Internship application. The applicaton must allow users to search movies via the hosted [API](https://frozen-dusk-95287.herokuapp.com) (powered by [OMDB API](http://www.omdbapi.com)) and add/ remove 5 movies from their list.
 
 I started this process by using the `create-react-app` boilerplate, then adding `typescript`, `react-router`, `redux`, and `redux-saga`.
 
-One of the main challenges I had were project time constraints, originally I had no plans of incorporating third party libraries for building components and styling but these plans were quickly tossed out on day 2. In the end, I chose to add `bootstrap-4` for easier styling, `font-awesome` for icons, `react-toastify` for success messages, and `react-responsive` to easily check device size for responsiveness. 
-
-In the next iteration I plan on adding `webpack.config.js` file to more fully understand the build process.
+One of the main challenges I had were project time constraints, originally I had no plans of incorporating third party libraries for building components and styling but these plans were quickly tossed out on day 2. In the end, I chose to add `bootstrap-4` for easier styling, `font-awesome` for icons, `react-toastify` for displaying success and error messages, and `react-responsive` to change display for mobile/ desktop. 
