@@ -1,6 +1,13 @@
 ## The Shoppies 
 [Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
+Note:
+* The information for creating an account is used purely for demonstrating authentication. 
+* If you do not with to create an account you can use these credentials to login: 
+
+    email: `email@email.com`\
+    password: `123123123`
+
 An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
 
 ## Project Screen Shot(s)
