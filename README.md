@@ -1,4 +1,7 @@
 ## The Shoppies 
+
+An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
+
 [Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
 Note:
@@ -7,8 +10,6 @@ Note:
 
     email: `email@email.com`\
     password: `123123123`
-
-An application in which users can search and nominate 5 movies, powered by OMDB API and built with React, Redux, and Bootstrap.
 
 ## Project Screen Shot(s)
 
