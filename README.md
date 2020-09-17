@@ -5,6 +5,7 @@ An application in which users can search and nominate 5 movies, powered by OMDB 
 [Demo](https://the-shoppies-award.herokuapp.com/welcome)
 
 Note:
+* Both the API and the frontend is hosted for free on Heroku which means significant loading times if you are the first to access the app within the hour. Please be patient and reload the page if necessary.
 * The information for creating an account is used purely for demonstrating authentication. 
 * If you do not with to create an account you can use these credentials to login: 
 
